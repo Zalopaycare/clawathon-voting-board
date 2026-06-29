@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zalopay × Clawathon 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #0062FF;
+    --blue-light: #3384FF;
+    --blue-pale: #E8F0FF;
+    --green: #0DB14B;
+    --green-light: #16D466;
+    --green-glow: rgba(13, 177, 75, 0.35);
+    --dark: #060B0F;
+    --dark-2: #0D1612;
+    --dark-3: #14201B;
+    --mid: #2C3A5C;
+    --slate: #5B6E99;
+    --muted: #8A9ABF;
+    --border: rgba(255,255,255,0.07);
+    --white: #F0F4FF;
+    --track-agentic: #6C5CE7;
+    --track-auto: #00B894;
+    --track-data: #E17055;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Be Vietnam Pro", sans-serif;
+    background:
+      radial-gradient(ellipse at top right, rgba(13, 177, 75, 0.05) 0%, transparent 50%),
+      var(--dark);
+    background-attachment: fixed;
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background:
+      radial-gradient(ellipse 80% 60% at 85% 30%, rgba(13, 177, 75, 0.18) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 80% at 15% 70%, rgba(0, 200, 150, 0.12) 0%, transparent 60%),
+      linear-gradient(135deg, #050A0E 0%, #0A1A14 35%, #0A1F1A 65%, #0A1A24 100%);
+    border-bottom: 1px solid rgba(13, 177, 75, 0.15);
+    padding: 36px 32px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, transparent 0%, transparent 90%, rgba(13, 177, 75, 0.06) 100%),
+      repeating-linear-gradient(90deg, transparent 0px, transparent 60px, rgba(13, 177, 75, 0.025) 60px, rgba(13, 177, 75, 0.025) 61px),
+      repeating-linear-gradient(0deg, transparent 0px, transparent 60px, rgba(13, 177, 75, 0.02) 60px, rgba(13, 177, 75, 0.02) 61px);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60%;
+    height: 140%;
+    background: radial-gradient(ellipse at center, rgba(0, 255, 150, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+    animation: techGlow 8s ease-in-out infinite;
+  }
+  @keyframes techGlow {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+  .hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hero-text { flex: 1; min-width: 280px; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(13, 177, 75, 0.15);
+    border: 1px solid rgba(13, 177, 75, 0.4);
+    border-radius: 100px;
+    padding: 5px 13px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--green-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    box-shadow: 0 0 16px rgba(13, 177, 75, 0.15);
+  }
+  .hero-badge::before { content: "⚡"; }
+
+  /* Main heading — the rally call */
+  .rally-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(26px, 3.6vw, 42px);
+    font-weight: 700;
+    color: var(--white);
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+  .rally-heading strong {
+    background: linear-gradient(135deg, var(--green-light) 0%, #5CFFB0 50%, var(--green) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    filter: drop-shadow(0 0 16px rgba(22, 212, 102, 0.4));
+  }
+  .rally-emoji {
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1;
+    display: inline-block;
+    animation: rallyShake 2.8s ease-in-out infinite;
+    flex-shrink: 0;
+    -webkit-text-fill-color: initial;
+  }
+  @keyframes rallyShake {
+    0%, 100% { transform: rotate(0deg); }
+    8% { transform: rotate(-14deg); }
+    16% { transform: rotate(10deg); }
+    24% { transform: rotate(-6deg); }
+    32% { transform: rotate(4deg); }
+    40% { transform: rotate(0deg); }
+  }
+
+  /* Poem as smaller subtitle */
+  .hero-poem {
+    margin: 0;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(14px, 1.5vw, 17px);
+    font-weight: 400;
+    color: #C9D5F0;
+    font-style: italic;
+    line-height: 1.55;
+    letter-spacing: 0.005em;
+    opacity: 0.92;
+  }
+  .hero-poem em { font-style: italic; }
+
+  /* Countdown — no box, just digits, BIG */
+  .countdown-bare {
+    flex-shrink: 0;
+  }
+  .countdown-numbers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cd-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 72px;
+    position: relative;
+  }
+  .cd-unit::before {
+    content: "";
+    position: absolute;
+    inset: -8px -10px;
+    background: radial-gradient(ellipse at center, rgba(13, 177, 75, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+    border-radius: 12px;
+  }
+  .cd-val {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 24px rgba(13, 177, 75, 0.3);
+    position: relative;
+  }
+  .cd-lbl {
+    font-size: 11.5px;
+    color: var(--green-light);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 10px;
+    font-weight: 600;
+    position: relative;
+    opacity: 0.85;
+  }
+  .cd-sep {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 44px;
+    font-weight: 300;
+    color: rgba(13, 177, 75, 0.4);
+    margin-bottom: 26px;
+    animation: sepBlink 1s ease-in-out infinite;
+  }
+  @keyframes sepBlink {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  .countdown-bare.ended .cd-val { color: #FF6B6B; }
+  .countdown-bare.urgent .cd-val { color: #FFB400; animation: urgentBlink 1.2s ease-in-out infinite; }
+  @keyframes urgentBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  /* Stats box (in 2-col row, right side) — 3 sections stacked */
+  .stats-box {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .stats-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .stats-section-label {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .stats-section-body {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .stats-totals {
+    gap: 24px;
+  }
+  .stat-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .stat-mini-num {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .stat-mini-lbl {
+    font-size: 10.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+  .stats-divider-h {
+    height: 1px;
+    background: var(--border);
+    width: 100%;
+  }
+  .stat-chips {
+    gap: 12px;
+  }
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 3px 8px;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .chip:hover { background: rgba(255,255,255,0.04); }
+  .chip-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .chip-text {
+    font-size: 13px;
+    color: var(--white);
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .chip-text strong {
+    font-family: "Space Grotesk", sans-serif;
+    color: var(--white);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+  .chip-text .pct {
+    color: var(--muted);
+    font-size: 11px;
+    margin-left: 3px;
+    font-weight: 500;
+  }
+
+  /* Hero row 2-col: top 5 + stats box */
+  .hero-row-2col {
+    max-width: 1280px;
+    margin: 22px auto 0;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  /* Top 5 Leaderboard - compact */
+  .leaderboard-wrap {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+  }
+  .leaderboard-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .lb-icon { font-size: 18px; line-height: 1; }
+  .lb-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.005em;
+  }
+  .leaderboard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .lb-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 7px 10px;
+    transition: border-color 0.18s, transform 0.18s;
+  }
+  .lb-row:hover {
+    border-color: rgba(0,98,255,0.35);
+    transform: translateX(2px);
+  }
+  .lb-row.rank-1 { background: linear-gradient(90deg, rgba(255,215,0,0.12) 0%, var(--dark-2) 70%); border-color: rgba(255,215,0,0.35); }
+  .lb-row.rank-2 { background: linear-gradient(90deg, rgba(192,192,192,0.08) 0%, var(--dark-2) 70%); border-color: rgba(192,192,192,0.25); }
+  .lb-row.rank-3 { background: linear-gradient(90deg, rgba(205,127,50,0.08) 0%, var(--dark-2) 70%); border-color: rgba(205,127,50,0.28); }
+
+  .lb-rank {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--mid);
+    min-width: 30px;
+    text-align: center;
+    line-height: 1;
+  }
+  .lb-row.rank-1 .lb-rank,
+  .lb-row.rank-2 .lb-rank,
+  .lb-row.rank-3 .lb-rank { font-size: 20px; }
+
+  .lb-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .lb-name {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.25;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .lb-track {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-top: 1px;
+  }
+
+  .lb-vote {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+    flex-shrink: 0;
+  }
+  .lb-vote-num {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--blue-light);
+    line-height: 1;
+  }
+  .lb-vote-lbl {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+
+  .lb-btn {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 6px 11px;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.15s;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .lb-btn:hover { background: var(--blue-light); transform: scale(1.04); }
+  .lb-row.rank-1 .lb-btn {
+    background: linear-gradient(135deg, #FFD700, #FF9500);
+    color: #1A0E00;
+    font-weight: 700;
+    box-shadow: 0 2px 10px rgba(255,180,0,0.3);
+  }
+  .lb-row.rank-1 .lb-btn:hover { background: linear-gradient(135deg, #FFE259, #FFB347); }
+
+  /* Gold time wrapper */
+  .goldtime-wrap {
+    max-width: 1280px;
+    margin: 18px auto 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Gold time — prominent */
+  @keyframes goldPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,193,7,0.3), 0 0 40px rgba(255,140,0,0.2); }
+    50% { box-shadow: 0 0 0 6px rgba(255,193,7,0), 0 0 60px rgba(255,140,0,0.35); }
+  }
+  @keyframes goldShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes boltFlicker {
+    0%, 100% { transform: rotate(-8deg) scale(1); opacity: 1; }
+    50% { transform: rotate(-4deg) scale(1.08); opacity: 0.9; }
+  }
+  .goldtime {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    animation: goldPulse 2.6s ease-in-out infinite;
+  }
+  .goldtime-glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #FF6B00 0%, #FFB400 40%, #FFD700 70%, #FF8C00 100%);
+    opacity: 0.92;
+  }
+  .goldtime-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+    background-size: 200% 100%;
+    animation: goldShimmer 3.5s linear infinite;
+  }
+  .goldtime-inner {
+    position: relative;
+    z-index: 1;
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  .goldtime-badge {
+    flex-shrink: 0;
+    background: rgba(20,10,0,0.85);
+    border-radius: 16px;
+    padding: 18px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    border: 2px solid rgba(255,215,0,0.7);
+    box-shadow: 0 0 32px rgba(255,215,0,0.35), inset 0 0 16px rgba(255,215,0,0.08);
+  }
+  .goldtime-bolt {
+    font-size: 40px;
+    line-height: 1;
+    display: inline-block;
+    animation: boltFlicker 1.4s ease-in-out infinite;
+  }
+  .goldtime-x2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: #FFD700;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(255,215,0,0.8), 0 0 4px rgba(255,180,0,0.6);
+  }
+  .goldtime-content { flex: 1; min-width: 0; }
+  .goldtime-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: rgba(20,10,0,0.85);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+  }
+  .goldtime-time {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 38px;
+    font-weight: 900;
+    color: #1A0E00;
+    line-height: 1.05;
+    margin-top: 5px;
+    letter-spacing: -0.015em;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.2);
+  }
+  .goldtime-tagline {
+    font-size: 13px;
+    color: rgba(20,10,0,0.88);
+    margin-top: 8px;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .goldtime-tagline strong { color: #1A0E00; font-weight: 800; }
+
+  /* Analytics quick stats */
+  /* Old hero-stats override removed; see new .stat-mini in stats-strip */
+
+  /* CONTROLS */
+  .controls-bar {
+    background: rgba(19,25,41,0.95);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(16px);
+  }
+  .controls-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .search-wrap { position: relative; flex: 1; min-width: 200px; }
+  .search-icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 14px; pointer-events: none; }
+  .search-input {
+    width: 100%;
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 9px 13px 9px 38px;
+    font-size: 14px;
+    color: var(--white);
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.15s;
+  }
+  .search-input::placeholder { color: var(--muted); }
+  .search-input:focus { border-color: rgba(0,98,255,0.5); }
+
+  .filter-group { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .filter-btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--dark-3);
+    color: var(--muted);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .filter-btn:hover { border-color: rgba(0,98,255,0.3); color: var(--white); }
+  .filter-btn.active-agentic { background: rgba(108,92,231,0.2); border-color: var(--track-agentic); color: #A89CFF; }
+  .filter-btn.active-auto { background: rgba(0,184,148,0.15); border-color: var(--track-auto); color: #00DBA8; }
+  .filter-btn.active-data { background: rgba(225,112,85,0.15); border-color: var(--track-data); color: #FF9F8C; }
+  .filter-btn.active-all { background: rgba(0,98,255,0.15); border-color: var(--blue); color: var(--blue-light); }
+
+  .sort-select {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 13px;
+    color: var(--white);
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+  }
+  .sort-select option { background: var(--dark-2); }
+
+  .result-count { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+  .result-count strong { color: var(--white); }
+
+  /* GRID */
+  .main { max-width: 1280px; margin: 0 auto; padding: 28px 32px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 18px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+    border-color: rgba(0,98,255,0.28);
+  }
+
+  .card-rank {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 7px;
+    padding: 3px 9px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .card-rank.gold { color: #FFD700; border-color: rgba(255,215,0,0.35); background: rgba(255,215,0,0.12); }
+  .card-rank.silver { color: #C0C0C0; border-color: rgba(192,192,192,0.3); background: rgba(192,192,192,0.08); }
+  .card-rank.bronze { color: #CD7F32; border-color: rgba(205,127,50,0.3); background: rgba(205,127,50,0.1); }
+  .card-rank.unranked { color: var(--slate); font-style: italic; font-size: 10.5px; }
+
+  /* Thumbnail */
+  .thumb-wrap {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--dark-3);
+    position: relative;
+    overflow: hidden;
+  }
+  .thumb-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--mid);
+  }
+  .thumb-placeholder .ph-icon { font-size: 28px; opacity: 0.5; }
+  .thumb-placeholder span { font-size: 11px; color: var(--slate); }
+  .thumb-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+  .thumb-img.loaded { opacity: 1; }
+
+  .card-body { padding: 14px 16px; flex: 1; display: flex; flex-direction: column; gap: 9px; }
+
+  .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  .card-name {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.35;
+    flex: 1;
+  }
+
+  .proj-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 12.5px;
+    color: #B5C5E8;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: -3px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .proj-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Sync button in controls */
+  .sync-btn {
+    background: linear-gradient(135deg, rgba(0,184,148,0.18), rgba(0,184,148,0.08));
+    border: 1px solid rgba(0,184,148,0.4);
+    color: #00DBA8;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sync-btn:hover { background: rgba(0,184,148,0.25); border-color: rgba(0,184,148,0.6); }
+  .sync-btn.has-data { background: rgba(0,184,148,0.12); }
+
+  /* Modal */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    max-width: 680px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+  }
+  .modal-head {
+    padding: 22px 26px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .modal-head h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .modal-head p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .modal-close {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .modal-close:hover { color: var(--white); }
+  .modal-body { padding: 22px 26px; }
+
+  .step {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .step-num {
+    background: var(--blue);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .step-body { flex: 1; min-width: 0; }
+  .step-title { font-size: 13.5px; font-weight: 600; color: var(--white); margin-bottom: 4px; line-height: 1.4; }
+  .step-desc { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+  .step-desc code {
+    background: rgba(0,98,255,0.15);
+    color: #93C5FD;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: ui-monospace, monospace;
+    font-size: 11.5px;
+  }
+  .step-desc a { color: var(--blue-light); text-decoration: underline; }
+  .step-desc strong { color: var(--white); }
+
+  .script-box {
+    background: #050810;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-top: 8px;
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    color: #93C5FD;
+    word-break: break-all;
+    line-height: 1.5;
+    max-height: 80px;
+    overflow-y: auto;
+    position: relative;
+  }
+  .copy-btn {
+    background: var(--blue);
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  .copy-btn:hover { background: var(--blue-light); }
+  .copy-btn.copied { background: var(--track-auto); }
+
+  .paste-area {
+    width: 100%;
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    color: var(--white);
+    font-family: ui-monospace, monospace;
+    font-size: 11.5px;
+    resize: vertical;
+    min-height: 100px;
+    outline: none;
+    margin-top: 8px;
+  }
+  .paste-area:focus { border-color: rgba(0,98,255,0.5); }
+  .paste-hint {
+    margin-top: 10px;
+    background: rgba(255,193,7,0.06);
+    border: 1px solid rgba(255,193,7,0.2);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: #D4C28A;
+    line-height: 1.55;
+  }
+  .paste-hint strong { color: #FFD978; font-weight: 600; }
+  .paste-hint code {
+    background: rgba(0,0,0,0.4);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #88C0FF;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .save-status code {
+    background: rgba(0,0,0,0.4);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #88C0FF;
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 13.5px;
+  }
+  .btn-primary:hover { background: var(--blue-light); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+  }
+  .btn-secondary:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
+  .save-status {
+    font-size: 12.5px;
+    color: var(--track-auto);
+    margin-left: auto;
+  }
+
+  .vote-chip {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(0,98,255,0.12);
+    border: 1px solid rgba(0,98,255,0.22);
+    border-radius: 7px;
+    padding: 4px 10px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--blue-light);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .vote-chip::before { content: "▲"; font-size: 8px; opacity: 0.8; }
+  .vote-chip.no-vote { color: var(--slate); border-color: rgba(255,255,255,0.06); background: rgba(255,255,255,0.03); }
+  .vote-chip.no-vote::before { content: ""; }
+
+  .vote-bar-wrap { height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+  .vote-bar { height: 100%; background: linear-gradient(90deg, var(--blue) 0%, #60A5FA 100%); border-radius: 2px; }
+
+  .track-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .track-tag.agentic { background: rgba(108,92,231,0.15); color: #A89CFF; border: 1px solid rgba(108,92,231,0.2); }
+  .track-tag.auto { background: rgba(0,184,148,0.12); color: #00DBA8; border: 1px solid rgba(0,184,148,0.2); }
+  .track-tag.data { background: rgba(225,112,85,0.12); color: #FF9F8C; border: 1px solid rgba(225,112,85,0.2); }
+
+  .card-meta { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 2px; }
+  .meta-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--muted); min-width: 0; }
+  .meta-item.grow { flex: 1; overflow: hidden; }
+  .meta-item span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .card-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: rgba(0,98,255,0.07);
+    border-top: 1px solid var(--border);
+    padding: 9px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue-light);
+    text-decoration: none;
+    transition: background 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .card-link:hover { background: rgba(0,98,255,0.16); }
+
+  /* EMPTY */
+  .empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 32px;
+    color: var(--muted);
+  }
+  .empty h3 { font-size: 18px; margin-bottom: 8px; color: var(--slate); }
+
+  /* FOOTER */
+  .footer-bar {
+    border-top: 1px solid var(--border);
+    padding: 20px 32px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--slate);
+    margin-top: 20px;
+  }
+
+  @media (max-width: 980px) {
+    .hero-row-2col { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .hero-inner { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .countdown-bare { width: 100%; }
+    .countdown-numbers { justify-content: flex-start; }
+    .lb-track { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 24px 16px 20px; }
+    .rally-heading { font-size: 22px; gap: 10px; line-height: 1.25; }
+    .rally-emoji { font-size: 24px; }
+    .hero-poem { font-size: 13px; }
+    .leaderboard-wrap, .stats-box, .goldtime-wrap { margin-left: 0; margin-right: 0; }
+    .cd-unit { min-width: 50px; }
+    .cd-val { font-size: 36px; }
+    .cd-sep { font-size: 26px; margin-bottom: 18px; }
+    .cd-lbl { font-size: 10px; margin-top: 6px; }
+    .stat-mini-num { font-size: 20px; }
+    .goldtime-time { font-size: 26px; }
+    .goldtime-x2 { font-size: 22px; }
+    .goldtime-bolt { font-size: 32px; }
+    .goldtime-inner { padding: 16px 18px; gap: 14px; }
+    .goldtime-badge { padding: 14px 16px; }
+    .lb-row { padding: 7px 10px; gap: 9px; }
+    .lb-rank { font-size: 16px; min-width: 26px; }
+    .lb-name { font-size: 13px; }
+    .lb-vote-num { font-size: 16px; }
+    .lb-btn { padding: 6px 10px; font-size: 11.5px; }
+    .controls-bar { padding: 12px 16px; }
+    .main { padding: 16px; }
+    .grid { grid-template-columns: 1fr; gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">Zalopay · Clawathon 2026</div>
+      <h1 class="rally-heading">
+        <span class="rally-emoji">📣</span>
+        <span>Kêu gọi lăng xê <strong>gà nhà Zalopay</strong><br>tại Claw-a-thon 2026</span>
+      </h1>
+      <p class="hero-poem">
+        <em>Một cây làm chẳng nên non<br>Zalopay chụm lại mong được vote cao</em>
+      </p>
+    </div>
+
+    <div class="countdown-bare" id="countdown">
+      <div class="countdown-numbers">
+        <div class="cd-unit"><span class="cd-val" id="cd-days">--</span><span class="cd-lbl">ngày</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-val" id="cd-hours">--</span><span class="cd-lbl">giờ</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-val" id="cd-mins">--</span><span class="cd-lbl">phút</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-val" id="cd-secs">--</span><span class="cd-lbl">giây</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2-col: Top 5 left, Stats box right -->
+  <div class="hero-row-2col">
+    <div class="leaderboard-wrap">
+      <div class="leaderboard-header">
+        <span class="lb-icon">🏆</span>
+        <span class="lb-title">Top 5 Agent có lượt vote cao nhất</span>
+      </div>
+      <div class="leaderboard" id="leaderboard"></div>
+    </div>
+
+    <div class="stats-box">
+      <div class="stats-section">
+        <div class="stats-section-label">Tổng quan</div>
+        <div class="stats-section-body stats-totals">
+          <div class="stat-mini">
+            <span class="stat-mini-num" id="stat-total-agents">194</span>
+            <span class="stat-mini-lbl">Tổng Agents</span>
+          </div>
+          <div class="stat-mini">
+            <span class="stat-mini-num" id="stat-total-votes">—</span>
+            <span class="stat-mini-lbl">Tổng votes</span>
+          </div>
+        </div>
+      </div>
+      <div class="stats-divider-h"></div>
+      <div class="stats-section">
+        <div class="stats-section-label">Phân bổ Track</div>
+        <div class="stats-section-body stat-chips" id="track-stats"></div>
+      </div>
+      <div class="stats-divider-h"></div>
+      <div class="stats-section">
+        <div class="stats-section-label">Hình thức tham gia</div>
+        <div class="stats-section-body stat-chips" id="mode-stats"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gold time — below 2-col, before agent grid -->
+  <div class="goldtime-wrap">
+    <div class="goldtime">
+      <div class="goldtime-glow"></div>
+      <div class="goldtime-inner">
+        <div class="goldtime-badge">
+          <span class="goldtime-bolt">⚡</span>
+          <span class="goldtime-x2">×2 VOTES</span>
+        </div>
+        <div class="goldtime-content">
+          <div class="goldtime-title">Khung giờ vàng · Agent Showcase</div>
+          <div class="goldtime-time">14:30 – 16:30 · 03/07</div>
+          <div class="goldtime-tagline">Vote trong khung giờ này để đồng đội <strong>nhân đôi số vote</strong> và <strong>bứt phá</strong> 🚀</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="controls-bar">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="search" placeholder="Tìm tên team, email thành viên, tên project..." autocomplete="off">
+    </div>
+    <div class="filter-group">
+      <button class="filter-btn active-all" data-track="all">Tất cả</button>
+      <button class="filter-btn" data-track="Agentic Assistant">🤖 Agentic</button>
+      <button class="filter-btn" data-track="Automation &amp; Integration">⚙️ Automation</button>
+      <button class="filter-btn" data-track="Data Analysis">📊 Data</button>
+    </div>
+    <select class="sort-select" id="sort">
+      <option value="vote-desc">↓ Votes cao nhất</option>
+      <option value="vote-asc">↑ Votes thấp nhất</option>
+      <option value="name-asc">A–Z Tên team</option>
+      <option value="rank-asc">↑ Số thứ tự</option>
+    </select>
+    <button class="sync-btn" id="open-sync" style="display:none">
+      <span>📥</span>
+      <span id="sync-label">Đồng bộ thumbnail</span>
+    </button>
+    <div class="result-count"><strong id="count-num">194</strong> teams</div>
+  </div>
+</div>
+
+<main class="main">
+  <div class="grid" id="grid"></div>
+</main>
+
+<div class="footer-bar">
+  Clawathon 2026 · Zalopay BU · Dữ liệu từ danh sách đăng ký & bình chọn
+</div>
+
+<!-- SYNC MODAL -->
+<div class="modal-backdrop" id="sync-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h2>🔄 Cập nhật dữ liệu từ Clawathon</h2>
+        <p>App đã có sẵn thumbnail & mô tả cho tất cả 194 team. Nếu Clawathon có cập nhật mới (mô tả, ảnh), bạn có thể chạy lại sync để làm mới.</p>
+      </div>
+      <button class="modal-close" id="close-sync">×</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Mở trang Clawathon trong tab mới</div>
+          <div class="step-desc">
+            Click vào link: <a href="https://claw-a-thon.greennode.ai" target="_blank">https://claw-a-thon.greennode.ai</a> — đăng nhập bằng tài khoản VNG nếu được yêu cầu.
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Mở Console (cửa sổ lập trình)</div>
+          <div class="step-desc">
+            Trên Mac: nhấn <strong>Cmd + Option + J</strong> (hoặc trên menu Safari/Chrome chọn <strong>Develop → Show JavaScript Console</strong>).
+            <br>Sẽ hiện 1 cửa sổ đen có ô trống ở dưới để gõ chữ.
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Copy đoạn script này, paste vào Console rồi nhấn Enter</div>
+          <div class="step-desc">
+            <div class="script-box" id="script-content"></div>
+            <button class="copy-btn" id="copy-script">📋 Copy script</button>
+            <div style="margin-top: 8px; font-size: 12px; color: var(--slate);">Script sẽ tự động cuộn xuống cuối trang để load hết, rồi copy data vào clipboard. Mất khoảng 20–40 giây.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">Khi thấy popup "🎉 Xong!"</div>
+          <div class="step-desc">
+            Bấm OK trên popup. Lúc này dữ liệu đã được copy vào clipboard.
+            <br><br>
+            Quay lại tab này, <strong>click vào ô bên dưới rồi nhấn Cmd + V</strong> để paste:
+            <textarea class="paste-area" id="paste-data" placeholder='Paste dữ liệu vào đây (chuỗi dài bắt đầu bằng [{"slug":"...","thumbnail":"...","description":"..."}, ...])'></textarea>
+            <div class="paste-hint">
+              <strong>💡 Lưu ý:</strong> Ô này dành cho <strong>kết quả</strong> (chuỗi JSON dài), không phải script. Nếu sau khi paste mà thấy đoạn bắt đầu bằng <code>(async()=&gt;</code> — tức là clipboard vẫn còn script cũ. Quay lại tab Clawathon, xem Console: gõ <code>copy(window.__clawJSON)</code> rồi Enter để copy lại đúng kết quả.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-primary" id="save-data">💾 Lưu dữ liệu</button>
+        <button class="btn-secondary" id="clear-data">Xóa dữ liệu cũ</button>
+        <div class="save-status" id="save-status"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const RAW = [{"no":12,"team":"Temporal Loom","track":"Agentic Assistant","vote":55,"memberCount":3,"emails":"khangldh2@vng.com.vn, minhdc3@vng.com.vn, duylvh@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/temporal-loom","slug":"temporal-loom"},{"no":13,"team":"Texas Chicken","track":"Automation & Integration","vote":55,"memberCount":3,"emails":"cuongdm4@vng.com.vn, huyennn@vng.com.vn, anhdt11@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/vng-meet","slug":"vng-meet"},{"no":14,"team":"Ví Trống Trơn","track":"Data Analysis","vote":54,"memberCount":2,"emails":"ducnv5@vng.com.vn, datht8@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/z-merchpulse","slug":"z-merchpulse"},{"no":15,"team":"Zino","track":"Automation & Integration","vote":51,"memberCount":2,"emails":"vun@vng.com.vn, thunna2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/mathplay-studio","slug":"mathplay-studio"},{"no":17,"team":"Commit My Way","track":"Agentic Assistant","vote":44,"memberCount":3,"emails":"huanntn@vng.com.vn, annhg@vng.com.vn, loint6@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/voc-agent","slug":"voc-agent"},{"no":19,"team":"Gâu gâu","track":"Automation & Integration","vote":42,"memberCount":3,"emails":"duynq5@vng.com.vn, mynt5@vng.com.vn, nghiatdh@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/queo-solution-tool-and-agent-nen-tang-tri-thuc-hop-nhat-360","slug":"queo-solution-tool-and-agent-nen-tang-tri-thuc-hop-nhat-360"},{"no":26,"team":"8AM","track":"Data Analysis","vote":33,"memberCount":1,"emails":"hungtq9@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/creative-performance-insight-agent","slug":"creative-performance-insight-agent"},{"no":27,"team":"N-One","track":"Automation & Integration","vote":30,"memberCount":1,"emails":"ngocna2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/ai-design-critic-agent","slug":"ai-design-critic-agent"},{"no":30,"team":"Clawsome","track":"Data Analysis","vote":27,"memberCount":3,"emails":"vuongvx@vng.com.vn, liennn@vng.com.vn, anhb2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/clawsome-agent","slug":"clawsome-agent"},{"no":31,"team":"NẾU A.I LÀM ĐƯỢC","track":"Data Analysis","vote":27,"memberCount":3,"emails":"tranvlh@vng.com.vn, thaoptt7@vng.com.vn, anhpn8@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zalopay-505","slug":"zalopay-505"},{"no":33,"team":"Agentic Chaos","track":"Automation & Integration","vote":24,"memberCount":3,"emails":"montt@vng.com.vn, khoatm@vng.com.vn, trangnt16@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/piano-teacher","slug":"piano-teacher"},{"no":34,"team":"ZOP_HR_INBOX","track":"Automation & Integration","vote":24,"memberCount":3,"emails":"hoabtq@vng.com.vn, hieupm2@vng.com.vn, ving@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/dispute-automation-tool","slug":"dispute-automation-tool"},{"no":35,"team":"UM Elites","track":"Agentic Assistant","vote":23,"memberCount":3,"emails":"vint8@vng.com.vn, khoach@vng.com.vn, haunt2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/config-drift-detector","slug":"config-drift-detector"},{"no":36,"team":"Cục cưng","track":"Agentic Assistant","vote":21,"memberCount":3,"emails":"vunt@vng.com.vn, anhtvh@vng.com.vn, datnt30@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/cuc-cung-agent-platform","slug":"cuc-cung-agent-platform"},{"no":39,"team":"AgentYoung","track":"Automation & Integration","vote":20,"memberCount":3,"emails":"trangtt2@vng.com.vn, trinhltt2@vng.com.vn, baolv@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/qe-copilot","slug":"qe-copilot"},{"no":40,"team":"Não Nhân Tạo","track":"Data Analysis","vote":19,"memberCount":3,"emails":"thaontp15@vng.com.vn, thanhlpc2@vng.com.vn, huypm3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zalopay-merchant-analytics","slug":"zalopay-merchant-analytics"},{"no":42,"team":"ZOP_Bank  Reconciliation","track":"Automation & Integration","vote":18,"memberCount":3,"emails":"hienttd@vng.com.vn, trangdtp@vng.com.vn, nuht2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/bank-reconcile-agent","slug":"bank-reconcile-agent"},{"no":43,"team":"Come My Way","track":"Agentic Assistant","vote":17,"memberCount":3,"emails":"thitb@vng.com.vn, thanhnk4@vng.com.vn, yenltl@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zalopay-sky-agent","slug":"zalopay-sky-agent"},{"no":46,"team":"ALPaca","track":"Agentic Assistant","vote":17,"memberCount":3,"emails":"phuongdpb@vng.com.vn, annt7@vng.com.vn, lylt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/alp-agent","slug":"alp-agent"},{"no":47,"team":"Super Bunny","track":"Agentic Assistant","vote":17,"memberCount":3,"emails":"thuppm@vng.com.vn, quetn@vng.com.vn, thuva@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/z-agent-one","slug":"z-agent-one"},{"no":48,"team":"Threes","track":"Agentic Assistant","vote":17,"memberCount":3,"emails":"khanhdnb@vng.com.vn, tructt2@vng.com.vn, ngandk4@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/ai-atlas-ai-powered-chinese-learning-agent","slug":"ai-atlas-ai-powered-chinese-learning-agent"},{"no":49,"team":"Sao cũng được","track":"Agentic Assistant","vote":16,"memberCount":3,"emails":"Vanpnh@vng.com.vn, Vydtt@vng.com.vn, binhplv@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zalopay-ai-agents-cskh-and-jira-analyzer","slug":"zalopay-ai-agents-cskh-and-jira-analyzer"},{"no":50,"team":"Bermuda","track":"Data Analysis","vote":15,"memberCount":3,"emails":"namlh6@vng.com.vn, khainm@vng.com.vn, trangkh@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/scribe-messy-transcripts-in-cited-report-out","slug":"scribe-messy-transcripts-in-cited-report-out"},{"no":53,"team":"AIAIAI","track":"Agentic Assistant","vote":13,"memberCount":3,"emails":"tanbq@vng.com.vn, Hant9@vng.com.vn, tanbq@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/merchant-data-analysis","slug":"merchant-data-analysis"},{"no":54,"team":"DÂN CHƠI THẺ","track":"Agentic Assistant","vote":13,"memberCount":3,"emails":"trungdq2@vng.com.vn, hanhnh4@vng.com.vn, chiltp@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/cashback-agent","slug":"cashback-agent"},{"no":55,"team":"AgentQ","track":"Automation & Integration","vote":13,"memberCount":3,"emails":"phantt@vng.com.vn, nhuvth@vng.com.vn, phuongha@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/test-case-generator-and-automation","slug":"test-case-generator-and-automation"},{"no":56,"team":"Chim Báo Bão","track":"Agentic Assistant","vote":13,"memberCount":1,"emails":"truchnt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/canteen-campus","slug":"canteen-campus"},{"no":57,"team":"Artemis","track":"Agentic Assistant","vote":13,"memberCount":1,"emails":"nguyetntm5@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/artemis-vu-tru-do-dac-x-phien-cho-tren-may","slug":"artemis-vu-tru-do-dac-x-phien-cho-tren-may"},{"no":58,"team":"\"AI?\"","track":"Data Analysis","vote":13,"memberCount":2,"emails":"trinhnnv@vng.com.vn, trangnth@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/voc-root-cause-agent-chatbot-csat","slug":"voc-root-cause-agent-chatbot-csat"},{"no":60,"team":"CS SOPie","track":"Automation & Integration","vote":12,"memberCount":2,"emails":"honglnp@vng.com.vn, doanpnk@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/sopie-agent","slug":"sopie-agent"},{"no":61,"team":"Double2T","track":"Data Analysis","vote":12,"memberCount":3,"emails":"thoint@vng.com.vn, thutla@vng.com.vn, trucbtt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/sole","slug":"sole"},{"no":62,"team":"Bugathon","track":"Automation & Integration","vote":12,"memberCount":3,"emails":"binhnv6@vng.com.vn, nhatbs@vng.com.vn, hoangnm10@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/vibe-typing","slug":"vibe-typing"},{"no":64,"team":"Contract Lens","track":"Agentic Assistant","vote":12,"memberCount":3,"emails":"thaoptx@vng.com.vn, tupnc@vng.com.vn, nganlhb@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/legal-zalopay-contract-lens","slug":"legal-zalopay-contract-lens"},{"no":65,"team":"DLS_BD Tym","track":"Data Analysis","vote":11,"memberCount":3,"emails":"phuongbb2@vng.com.vn, nghialh2@vng.com.vn, quynhntp@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/bd-intelligence-agent","slug":"bd-intelligence-agent"},{"no":66,"team":"Su-ba-gent","track":"Agentic Assistant","vote":11,"memberCount":3,"emails":"binhnt22@vng.com.vn, phatnp@vng.com.vn, dungld@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/oss-advisor","slug":"oss-advisor"},{"no":67,"team":"Spring","track":"Agentic Assistant","vote":11,"memberCount":3,"emails":"hautx@vng.com.vn, vuhx@vng.com.vn, phuongnnx@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/bizgrow","slug":"bizgrow"},{"no":68,"team":"AgentR","track":"Automation & Integration","vote":10,"memberCount":3,"emails":"trinvm3@vng.com.vn, duytq4@vng.com.vn, duytd3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/agentr","slug":"agentr"},{"no":69,"team":"Poseidon","track":"Agentic Assistant","vote":10,"memberCount":3,"emails":"quangttb@vng.com.vn, tintt3@vng.com.vn, longnh17@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/poseidon-agent","slug":"poseidon-agent"},{"no":70,"team":"L&Doraemon","track":"Automation & Integration","vote":10,"memberCount":3,"emails":"trietnpm@vng.com.vn, thunm@vng.com.vn, anhnh19@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/toro-assistant","slug":"toro-assistant"},{"no":71,"team":"Một mình","track":"Data Analysis","vote":10,"memberCount":1,"emails":"hopnth@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/contract-agent","slug":"contract-agent"},{"no":72,"team":"RiskMind AI","track":"Agentic Assistant","vote":9,"memberCount":2,"emails":"nhutn@vng.com.vn, vynt10@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/riskmind-ai","slug":"riskmind-ai"},{"no":73,"team":"ZOP_Bank Services","track":"Automation & Integration","vote":9,"memberCount":3,"emails":"landth2@vng.com.vn, huonglm2@vng.com.vn, longth6@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/monitor-transation","slug":"monitor-transation"},{"no":75,"team":"PayNodeGame","track":"Data Analysis","vote":9,"memberCount":3,"emails":"tuannt11@vng.com.vn, trungnt14@vng.com.vn, datnt28@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/veridex-app-intelligence-agent","slug":"veridex-app-intelligence-agent"},{"no":77,"team":"Cloud claw crew","track":"Agentic Assistant","vote":9,"memberCount":3,"emails":"hoangna@vng.com.vn, lyhtnl@vng.com.vn, huytm@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/pagefinder","slug":"pagefinder"},{"no":78,"team":"Automind WD3","track":"Agentic Assistant","vote":9,"memberCount":3,"emails":"Trieuttt@vng.com.vn, Trangntt3@vng.com.vn, Ngocntb3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/tro-ly-phap-ly-ai","slug":"tro-ly-phap-ly-ai"},{"no":79,"team":"PQE PCT","track":"Agentic Assistant","vote":9,"memberCount":3,"emails":"uyennnt2@vng.com.vn, hongdtk@vng.com.vn, khailv@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/ai-onboarding","slug":"ai-onboarding"},{"no":81,"team":"together","track":"Data Analysis","vote":8,"memberCount":2,"emails":"trangdtt@vng.com.vn, hienltt2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/tax-ai","slug":"tax-ai"},{"no":82,"team":"FA Thanh Sơn","track":"Agentic Assistant","vote":8,"memberCount":3,"emails":"tuannm4@vng.com.vn, hangnt@vng.com.vn, vannt5@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/ho-kinh-doanh-2026","slug":"ho-kinh-doanh-2026"},{"no":83,"team":"Niú bī","track":"Agentic Assistant","vote":8,"memberCount":3,"emails":"annth3@vng.com.vn, truchnt2@vng.com.vn, thyhnk@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/niubi-promo-assistant","slug":"niubi-promo-assistant"},{"no":84,"team":"Soft Mom","track":"Agentic Assistant","vote":8,"memberCount":3,"emails":"phuongntt12@vng.com.vn, thuyntk@vng.com.vn, anhth4@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/voucher-ops-ai","slug":"voucher-ops-ai"},{"no":86,"team":"H2S","track":"Agentic Assistant","vote":8,"memberCount":3,"emails":"hieultn@vng.com.vn, huyenvhk@vng.com.vn, sondt6@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/bach-khoa-toan-thu-ops-ai-knowledge-base-ops","slug":"bach-khoa-toan-thu-ops-ai-knowledge-base-ops"},{"no":87,"team":"HKT101","track":"Agentic Assistant","vote":8,"memberCount":3,"emails":"HuyHQ8@vng.com.vn, KhangPB@vng.com.vn, ToanNTT@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/moneyradar","slug":"moneyradar"},{"no":88,"team":"AMC","track":"Automation & Integration","vote":8,"memberCount":3,"emails":"myltt@vng.com.vn, vinhhp2@vng.com.vn, vinhpt2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/merch-agent","slug":"merch-agent"},{"no":89,"team":"Giấy ghi chú tâm nguyện","track":"Agentic Assistant","vote":8,"memberCount":3,"emails":"nammn@vng.com.vn, thanhvc@vng.com.vn, anhvtt2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/stock-knowledge-hub","slug":"stock-knowledge-hub"},{"no":90,"team":"Go with the flow","track":"Agentic Assistant","vote":7,"memberCount":3,"emails":"thangtm2@vng.com.vn, tramntq@vng.com.vn, tranvhd@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zalopay-insurance-consultant","slug":"zalopay-insurance-consultant"},{"no":91,"team":"OnlyMe","track":"Automation & Integration","vote":7,"memberCount":1,"emails":"khangth2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zenfix","slug":"zenfix"},{"no":92,"team":"NCK","track":"Automation & Integration","vote":7,"memberCount":3,"emails":"dieunc@vng.com.vn, hoanghtk@vng.com.vn, trangptt10@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/dashboard-monitor-assisstant","slug":"dashboard-monitor-assisstant"},{"no":93,"team":"tomo","track":"Agentic Assistant","vote":7,"memberCount":3,"emails":"chaundh@vng.com.vn, thiennlp@vng.com.vn, manhtct@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/tomo","slug":"tomo"},{"no":94,"team":"NH2","track":"Automation & Integration","vote":7,"memberCount":3,"emails":"namnk@vng.com.vn, hungnq9@vng.com.vn, hieulv3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/mini-erp-onboarding-new-merchant","slug":"mini-erp-onboarding-new-merchant"},{"no":95,"team":"TQM","track":"Automation & Integration","vote":7,"memberCount":3,"emails":"MinhNNN@vng.com.vn, QuyenNPT@vng.com.vn, TrangNTT6@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/aging-dashboard","slug":"aging-dashboard"},{"no":96,"team":"Vũng Tàu","track":"Data Analysis","vote":7,"memberCount":3,"emails":"trucnt7@vng.com.vn, huydg3@vng.com.vn, linhhng@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/ai-agent-analytics","slug":"ai-agent-analytics"},{"no":97,"team":"AI-Around-You","track":"Automation & Integration","vote":7,"memberCount":3,"emails":"luanpd@vng.com.vn, hienlq@vng.com.vn, tinhhn@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/sre-agent","slug":"sre-agent"},{"no":98,"team":"DAGENT","track":"Agentic Assistant","vote":7,"memberCount":3,"emails":"tranghm@vng.com.vn, thuyvtt4@vng.com.vn, quynhvm@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/dagent","slug":"dagent"},{"no":99,"team":"3N (Nhung - Nhàn - Nguyên)","track":"Agentic Assistant","vote":7,"memberCount":3,"emails":"nhungvth@vng.com.vn, nhanlt3@vng.com.vn, Nguyenht@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/agent-ke-toan","slug":"agent-ke-toan"},{"no":100,"team":"1 mà 2","track":"Automation & Integration","vote":6,"memberCount":1,"emails":"nhuvth2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/jira-master","slug":"jira-master"},{"no":101,"team":"AI Warriors","track":"Agentic Assistant","vote":6,"memberCount":3,"emails":"linhtp4@vng.com.vn, hieplq@vng.com.vn, linhvtm@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zalopay-fintech-intelligence-agent","slug":"zalopay-fintech-intelligence-agent"},{"no":102,"team":"Clawver Minds","track":"Data Analysis","vote":6,"memberCount":2,"emails":"vyhtl@vng.com.vn, hann4@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/ai-memo-intelligence","slug":"ai-memo-intelligence"},{"no":103,"team":"rửa tiền","track":"Data Analysis","vote":6,"memberCount":3,"emails":"khoanvm@vng.com.vn, thovpa@vng.com.vn, khanhnd6@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zalopay-aml-ai-agent","slug":"zalopay-aml-ai-agent"},{"no":105,"team":"Ba con heo","track":"Automation & Integration","vote":6,"memberCount":3,"emails":"yenhtt@vng.com.vn, minhln9@vng.com.vn, namnth3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/be-lien-agent","slug":"be-lien-agent"},{"no":106,"team":"Double 2T","track":"Data Analysis","vote":6,"memberCount":2,"emails":"trucvlt@vng.com.vn, trangntt27@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/paylater-growth-strategy-agent","slug":"paylater-growth-strategy-agent"},{"no":107,"team":"Prompt Thủ","track":"Agentic Assistant","vote":6,"memberCount":3,"emails":"nhihty3@vng.com.vn, ngannpq@vng.com.vn, anhpn6@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/can-la-co-agent","slug":"can-la-co-agent"},{"no":108,"team":"3 anh em","track":"Automation & Integration","vote":6,"memberCount":3,"emails":"lichtv@vng.com.vn, khaidq@vng.com.vn, quynlc@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/3anhem-agent","slug":"3anhem-agent"},{"no":109,"team":"YÔ LÔ GƠ","track":"Agentic Assistant","vote":6,"memberCount":1,"emails":"nhihty2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/bot-nay-cuu-duoc-may","slug":"bot-nay-cuu-duoc-may"},{"no":110,"team":"Bee nè","track":"Agentic Assistant","vote":5,"memberCount":1,"emails":"thienlpm@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/bee-khong-de-ban-mot-minh","slug":"bee-khong-de-ban-mot-minh"},{"no":111,"team":"WowAI","track":"Agentic Assistant","vote":5,"memberCount":1,"emails":"anhdvh@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/meeting-insight-agent","slug":"meeting-insight-agent"},{"no":112,"team":"Nguyễn Xuân Hoàng","track":"Agentic Assistant","vote":5,"memberCount":1,"emails":"hoangnx3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zalopay-data-agent","slug":"zalopay-data-agent"},{"no":113,"team":"CP","track":"Data Analysis","vote":5,"memberCount":3,"emails":"dangnh17@vng.com.vn, anhnd3@vng.com.vn, duyhv3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/claw-a-thon-cp-agent","slug":"claw-a-thon-cp-agent"},{"no":114,"team":"Get it done","track":"Automation & Integration","vote":5,"memberCount":2,"emails":"anhdp5@vng.com.vn, hoalm2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/ai-summary-judge","slug":"ai-summary-judge"},{"no":115,"team":"Học Hỏi Là Chính","track":"Automation & Integration","vote":5,"memberCount":2,"emails":"vilth@vng.com.vn, ngandtn@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/merchant-integration-support","slug":"merchant-integration-support"},{"no":116,"team":"Team Ư","track":"Automation & Integration","vote":5,"memberCount":3,"emails":"datnp3@vng.com.vn, truongtn@vng.com.vn, tramctb2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/funnel-agent","slug":"funnel-agent"},{"no":117,"team":"AI Chạy Bằng Cơm","track":"Data Analysis","vote":5,"memberCount":3,"emails":"quanna3@vng.com.vn, tulhm@vng.com.vn, ngantk3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zalopay-complaint-analytics","slug":"zalopay-complaint-analytics"},{"no":118,"team":"Aiphobia","track":"Data Analysis","vote":5,"memberCount":2,"emails":"phongnv4@vng.com.vn, hientnv@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/dataholic","slug":"dataholic"},{"no":119,"team":"Nail-athon","track":"Agentic Assistant","vote":5,"memberCount":3,"emails":"huyndt3@vng.com.vn, lancth@vng.com.vn, linhnn7@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/jira-assistant","slug":"jira-assistant"},{"no":120,"team":"TaskForce AI","track":"Agentic Assistant","vote":5,"memberCount":3,"emails":"phuongnt3@vng.com.vn, thuypt@vng.com.vn, thuypt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/bot-bank-re","slug":"bot-bank-re"},{"no":121,"team":"projectF","track":"Data Analysis","vote":5,"memberCount":3,"emails":"luongnn@vng.com.vn, trungnc@vng.com.vn, thaont15@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/fraud-analytics-assistant","slug":"fraud-analytics-assistant"},{"no":122,"team":"ZN-0217","track":"Agentic Assistant","vote":5,"memberCount":1,"emails":"gianglh3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/nexusbank","slug":"nexusbank"},{"no":123,"team":"The Outlier","track":"Automation & Integration","vote":5,"memberCount":1,"emails":"namhd@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/review-radar-ai","slug":"review-radar-ai"},{"no":124,"team":"Chim Bao Bao","track":"Agentic Assistant","vote":5,"memberCount":1,"emails":"ngannhk3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/bookbird","slug":"bookbird"},{"no":125,"team":"Agent Tập Sự","track":"Data Analysis","vote":5,"memberCount":2,"emails":"tamntt@vng.com.vn, hunglq2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/user-story-compliance-agent","slug":"user-story-compliance-agent"},{"no":126,"team":"Tổ chức áo xanh","track":"Agentic Assistant","vote":4,"memberCount":3,"emails":"haitt5@vng.com.vn, anhptl@vng.com.vn, thynx@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/so-be-ngoan-zalopay","slug":"so-be-ngoan-zalopay"},{"no":127,"team":"GreenPay","track":"Agentic Assistant","vote":4,"memberCount":3,"emails":"phuongnb3@vng.com.vn, thuynd2@vng.com.vn, tanltn@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/nova-all-in-one-onboarding-ai-agent-assistant","slug":"nova-all-in-one-onboarding-ai-agent-assistant"},{"no":128,"team":"Sprout","track":"Agentic Assistant","vote":4,"memberCount":3,"emails":"haopn@vng.com.vn, trivd@vng.com.vn, nguyennt9@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/momentum","slug":"momentum"},{"no":129,"team":"Claw & Order","track":"Agentic Assistant","vote":4,"memberCount":3,"emails":"trangpy@vng.com.vn, nganck@vng.com.vn, thuyptt7@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/travel-ai-agent","slug":"travel-ai-agent"},{"no":130,"team":"Song Liễu Xuân Phong","track":"Automation & Integration","vote":4,"memberCount":2,"emails":"ngochlb2@vng.com.vn, linhvtp3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/xuat-hoa-don-agent-zalopay-box","slug":"xuat-hoa-don-agent-zalopay-box"},{"no":131,"team":"GRC","track":"Agentic Assistant","vote":4,"memberCount":3,"emails":"haulnd@vng.com.vn, thunt6@vng.com.vn, thittk2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/grc-assistant","slug":"grc-assistant"},{"no":132,"team":"ClawData","track":"Agentic Assistant","vote":4,"memberCount":2,"emails":"tuanlt2@vng.com.vn, hanhtx@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/datahub-advisor","slug":"datahub-advisor"},{"no":134,"team":"Newbie AI","track":"Data Analysis","vote":4,"memberCount":2,"emails":"thylvm@vng.com.vn, yendth@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/qualitytrack-cs","slug":"qualitytrack-cs"},{"no":136,"team":"YSKM","track":"Agentic Assistant","vote":4,"memberCount":3,"emails":"phatch2@vng.com.vn, chintl@vng.com.vn, baodg2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/thu-dong","slug":"thu-dong"},{"no":137,"team":"Sang Nguyễn - ZaloPay","track":"Agentic Assistant","vote":4,"memberCount":1,"emails":"sangnt6@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/workspace-ai-agent-tom-tat-teams-and-gmail","slug":"workspace-ai-agent-tom-tat-teams-and-gmail"},{"no":138,"team":"Miles & Money","track":"Agentic Assistant","vote":4,"memberCount":3,"emails":"phutt2@vng.com.vn, haonqs@vng.com.vn, dailq@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/hoi-dong-quan-tri-tai-chinh-ai","slug":"hoi-dong-quan-tri-tai-chinh-ai"},{"no":140,"team":"Song ngư","track":"Agentic Assistant","vote":4,"memberCount":3,"emails":"haulnd@vng.com.vn, tructt4@vng.com.vn, vynvt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/privacy-intake-chatbot","slug":"privacy-intake-chatbot"},{"no":141,"team":"TTN","track":"Agentic Assistant","vote":4,"memberCount":3,"emails":"tintk@vng.com.vn, thaidq4@vng.com.vn, nguyenlca@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/agent-mkt-campaign-nap-the-vui","slug":"agent-mkt-campaign-nap-the-vui"},{"no":142,"team":"Chicken Plus","track":"Agentic Assistant","vote":4,"memberCount":3,"emails":"thaontp16@vng.com.vn, thaolnt@vng.com.vn, minhvg@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/toro-cs-assistant","slug":"toro-cs-assistant"},{"no":143,"team":"Gogo","track":"Automation & Integration","vote":4,"memberCount":2,"emails":"baonlc@vng.com.vn, nganhtk5@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/absol-ai","slug":"absol-ai"},{"no":144,"team":"1 mình tui chấp hết","track":"Agentic Assistant","vote":4,"memberCount":1,"emails":"khoana10@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/tro-ly-ai-tra-cuu-thu-tuc-hanh-chinh-viet-nam","slug":"tro-ly-ai-tra-cuu-thu-tuc-hanh-chinh-viet-nam"},{"no":145,"team":"credit limit reached","track":"Automation & Integration","vote":4,"memberCount":3,"emails":"tuanlna@vng.com.vn, kienph@vng.com.vn, thangtd4@vng.com","link":"https://claw-a-thon.greennode.ai/project/nagiosai","slug":"nagiosai"},{"no":146,"team":"2k5Baby","track":"Agentic Assistant","vote":4,"memberCount":1,"emails":"anhnhm3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/babywhy","slug":"babywhy"},{"no":147,"team":"Summer Lubu","track":"Data Analysis","vote":4,"memberCount":3,"emails":"thainlq@vng.com.vn, Ngattt3@vng.com.vn, KhaiLT@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/growth-assistant-zalopay-mobility-services","slug":"growth-assistant-zalopay-mobility-services"},{"no":148,"team":"Morning","track":"Data Analysis","vote":4,"memberCount":1,"emails":"hungnv4@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/signal","slug":"signal"},{"no":149,"team":"Hóng là 9","track":"Automation & Integration","vote":4,"memberCount":3,"emails":"chiennm2@vng.com.vn, dungntt7@vng.com.vn, trangdtm@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/manage-and-approve-merchant-agreement","slug":"manage-and-approve-merchant-agreement"},{"no":150,"team":"Thử để nghiện","track":"Automation & Integration","vote":4,"memberCount":3,"emails":"thuyennpn@vng.com.vn, thampth@vng.com.vn, trangpnp@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/cashbook-assistant","slug":"cashbook-assistant"},{"no":151,"team":"Zero to Demo","track":"Automation & Integration","vote":3,"memberCount":3,"emails":"thuda2@vng.com.vn, thutt2@vng.com.vn, anhdvk@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/report-generating-agent","slug":"report-generating-agent"},{"no":152,"team":"Rookie","track":"Agentic Assistant","vote":3,"memberCount":3,"emails":"nhutt2@vng.com.vn, thinhdc@vng.com.vn, nhungpth3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/onboarding-buddy","slug":"onboarding-buddy"},{"no":153,"team":"Tôm & Jerry","track":"Agentic Assistant","vote":3,"memberCount":3,"emails":"anhtp6@vng.com.vn, tanht2@vng.com.vn, trangdlt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zalopay-wiki-agent","slug":"zalopay-wiki-agent"},{"no":154,"team":"Firstmate","track":"Automation & Integration","vote":3,"memberCount":3,"emails":"tiennt14@vng.com.vn, nhuttc@vng.com.vn, tienct@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/firstmate","slug":"firstmate"},{"no":155,"team":"OpsOne","track":"Data Analysis","vote":3,"memberCount":1,"emails":"khiemvt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/opsone","slug":"opsone"},{"no":156,"team":"GSDR Team","track":"Agentic Assistant","vote":3,"memberCount":1,"emails":"hoann5@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/linktink","slug":"linktink"},{"no":157,"team":"Anh em Macao","track":"Data Analysis","vote":3,"memberCount":3,"emails":"dangphh@vng.com.vn, nhuedc@vng.com.vn, trint@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/qc-test-case-agent","slug":"qc-test-case-agent"},{"no":159,"team":"Aurum","track":"Agentic Assistant","vote":3,"memberCount":1,"emails":"nhungtt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/gold-companion","slug":"gold-companion"},{"no":160,"team":"Đội săn tín hiệu","track":"Agentic Assistant","vote":3,"memberCount":3,"emails":"thinhth2@vng.com.vn, kietpt2@vng.com.vn, tramltm@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/personal-daily-digest","slug":"personal-daily-digest"},{"no":161,"team":"Triple H","track":"Automation & Integration","vote":3,"memberCount":3,"emails":"hanglt5@vng.com.vn, hoangpt2@vng.com.vn, huylg4@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/nodez-hub","slug":"nodez-hub"},{"no":162,"team":"Sinh viên ngành Y","track":"Agentic Assistant","vote":3,"memberCount":3,"emails":"nganntb3@vng.com.vn, hangptv@vng.com.vn, duocnt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/banhcanhbeobum","slug":"banhcanhbeobum"},{"no":163,"team":"Sara La","track":"Data Analysis","vote":3,"memberCount":1,"emails":"yenlk@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/monetization-allocator-agent","slug":"monetization-allocator-agent"},{"no":164,"team":"25-50-75","track":"Automation & Integration","vote":3,"memberCount":3,"emails":"minhnh18@vng.com.vn, vietntt@vng.com.vn, hangtt6@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/contract-review-agent","slug":"contract-review-agent"},{"no":166,"team":"TienNHPV","track":"Agentic Assistant","vote":3,"memberCount":1,"emails":"tiennhpv@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/personal-work-assistant-tiennhpv-agent","slug":"personal-work-assistant-tiennhpv-agent"},{"no":167,"team":"Phú Gia","track":"Agentic Assistant","vote":3,"memberCount":1,"emails":"quynp@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/phu-gia-cs-zalopay","slug":"phu-gia-cs-zalopay"},{"no":168,"team":"Sản phẩm này không phải để đi diễn","track":"Agentic Assistant","vote":3,"memberCount":2,"emails":"hautt2@vng.com.vn, tuttm3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/vng-room-booking-bot","slug":"vng-room-booking-bot"},{"no":170,"team":"Tiểu Mỹ","track":"Agentic Assistant","vote":2,"memberCount":3,"emails":"chantt@vng.com.vn, quynhvnp@vng.com.vn, chantt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/merchant-campaign-email-agent","slug":"merchant-campaign-email-agent"},{"no":171,"team":"Catcomics","track":"Agentic Assistant","vote":2,"memberCount":1,"emails":"chill@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/project-intelligence-agent","slug":"project-intelligence-agent"},{"no":172,"team":"Gần đèn thì sáng","track":"Agentic Assistant","vote":2,"memberCount":3,"emails":"trungdt5@vng.com.vn, anhntp7@vng.com.vn, phuongndc@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/meme-maker","slug":"meme-maker"},{"no":173,"team":"ZOP_MC 3","track":"Agentic Assistant","vote":2,"memberCount":3,"emails":"hanhdtk2@vng.com.vn, halth2@vng.com.vn, chithk@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/contract-review-agent-zop-mc","slug":"contract-review-agent-zop-mc"},{"no":174,"team":"2 Chị Em","track":"Automation & Integration","vote":2,"memberCount":2,"emails":"trangptt12@vng.com.vn, nhihm@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/recruitment-agent","slug":"recruitment-agent"},{"no":175,"team":"SO","track":"Data Analysis","vote":2,"memberCount":3,"emails":"cuongnn@vng.com.vn, hatm@vng.com.vn, truongnx10@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/tro-ly-bao-cao-van-hanh","slug":"tro-ly-bao-cao-van-hanh"},{"no":176,"team":"Triple B","track":"Agentic Assistant","vote":2,"memberCount":3,"emails":"hienntt11@vng.com.vn, tranglqt@vng.com.vn, ngandt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/imeow-email-assistant-agent","slug":"imeow-email-assistant-agent"},{"no":177,"team":"2TALe","track":"Data Analysis","vote":2,"memberCount":3,"emails":"tiennm6@vng.com.vn, anhlt17@vng.com.vn, lentt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/mktai-commander","slug":"mktai-commander"},{"no":178,"team":"huyenntm","track":"Agentic Assistant","vote":2,"memberCount":1,"emails":"huyenntm@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/lily","slug":"lily"},{"no":179,"team":"BaoBay","track":"Agentic Assistant","vote":2,"memberCount":1,"emails":"baont9@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/baobay-reply-assistant","slug":"baobay-reply-assistant"},{"no":181,"team":"Alo có em","track":"Data Analysis","vote":2,"memberCount":2,"emails":"dangnh22@vng.com.vn, thydna@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/agentt","slug":"agentt"},{"no":182,"team":"LÀM MẠNH","track":"Agentic Assistant","vote":2,"memberCount":3,"emails":"huynd14@vng.com.vn, nhanltp@vng.com.vn, huyenplt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/ai-coach-development","slug":"ai-coach-development"},{"no":183,"team":"vượt lên chính mình","track":"Data Analysis","vote":2,"memberCount":2,"emails":"duyenbpa@vng.com.vn, hanlgb@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/be-hadi-bao-hiem","slug":"be-hadi-bao-hiem"},{"no":184,"team":"ZSP","track":"Data Analysis","vote":2,"memberCount":2,"emails":"Anhtln@vng.com.vn, dancc@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/fintech-news-weekly-scan","slug":"fintech-news-weekly-scan"},{"no":186,"team":"Team số 2","track":"Data Analysis","vote":2,"memberCount":3,"emails":"Uyenkvt@vng.com.vn, quoclm2@vng.com.vn, locbv2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/salesweather-24h","slug":"salesweather-24h"},{"no":187,"team":"Học là Chính","track":"Agentic Assistant","vote":2,"memberCount":3,"emails":"thienlpm@vng.com.vn, thiennb@vng.com.vn, thuhtm@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/qc-analysic-agent","slug":"qc-analysic-agent"},{"no":188,"team":"TDC","track":"Automation & Integration","vote":2,"memberCount":3,"emails":"thangnv7@vng.com.vn, daotq2@vng.com.vn, chuongvn@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/agentsdast","slug":"agentsdast"},{"no":189,"team":"OZU","track":"Agentic Assistant","vote":2,"memberCount":2,"emails":"tantd2@vng.com.vn, xuandt2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/flight-finder-agent","slug":"flight-finder-agent"},{"no":190,"team":"PSE_AppSec","track":"Agentic Assistant","vote":2,"memberCount":3,"emails":"namln@vng.com.vn, nghiatg@vng.com.vn, haunk@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/phishing-guardian-chatbot","slug":"phishing-guardian-chatbot"},{"no":191,"team":"QualityAI","track":"Agentic Assistant","vote":2,"memberCount":1,"emails":"quantm6@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/rca-bug-agent","slug":"rca-bug-agent"},{"no":192,"team":"Liquiz","track":"Automation & Integration","vote":1,"memberCount":1,"emails":"baopx@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/incident-investigation-agent","slug":"incident-investigation-agent"},{"no":193,"team":"Đại đi","track":"Data Analysis","vote":1,"memberCount":3,"emails":"linhtm4@vng.com.vn, tienpd3@vng.com.vn, maibt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/promotion-agent","slug":"promotion-agent"},{"no":194,"team":"Sentinel","track":"Automation & Integration","vote":1,"memberCount":1,"emails":"nhatnh3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/marker-checker","slug":"marker-checker"},{"no":195,"team":"Duck Quin Agent (nhóm 10)","track":"Agentic Assistant","vote":1,"memberCount":1,"emails":"quynhnnn6@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/daily-benchmark","slug":"daily-benchmark"},{"no":196,"team":"ZOP_MC 1","track":"Automation & Integration","vote":1,"memberCount":1,"emails":"hoatm@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/reconagent","slug":"reconagent"},{"no":197,"team":"Esale","track":"Agentic Assistant","vote":1,"memberCount":1,"emails":"chidtk@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/tro-ly-esale","slug":"tro-ly-esale"},{"no":198,"team":"Con Cá","track":"Agentic Assistant","vote":1,"memberCount":1,"emails":"quangltp@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/put","slug":"put"},{"no":200,"team":"Wings","track":"Agentic Assistant","vote":1,"memberCount":1,"emails":"anhntt3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/bizbot","slug":"bizbot"},{"no":201,"team":"Hieulv4","track":"Data Analysis","vote":1,"memberCount":1,"emails":"hieulv4@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/tro-ly-tuyen-dung","slug":"tro-ly-tuyen-dung"},{"no":202,"team":"KT","track":"Agentic Assistant","vote":1,"memberCount":2,"emails":"trongdd2@vng.com.vn, khoapnm2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/ai-onboarding-assistant-bot","slug":"ai-onboarding-assistant-bot"},{"no":203,"team":"Mnemosyne","track":"Data Analysis","vote":1,"memberCount":1,"emails":"thulcm@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/memoir","slug":"memoir"},{"no":204,"team":"PQE","track":"Agentic Assistant","vote":1,"memberCount":1,"emails":"duynk7@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/podcast-vocab","slug":"podcast-vocab"},{"no":205,"team":"LN","track":"Agentic Assistant","vote":1,"memberCount":1,"emails":"nhatlv2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/node-agent","slug":"node-agent"},{"no":206,"team":"ZOP_OTornotOT","track":"Automation & Integration","vote":1,"memberCount":2,"emails":"linhttc@vng.com.vn, hungnm10@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/work-task-planner","slug":"work-task-planner"},{"no":207,"team":"Long Béo","track":"Agentic Assistant","vote":1,"memberCount":2,"emails":"dungdt4@vng.com.vn, nhannp2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/scam-alert-agent","slug":"scam-alert-agent"},{"no":208,"team":"Anh em guột","track":"Agentic Assistant","vote":1,"memberCount":2,"emails":"phucnnh@vng.com.vn, quangdp2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/lucky-campaign-generator","slug":"lucky-campaign-generator"},{"no":210,"team":"Prompt & Pray","track":"Agentic Assistant","vote":1,"memberCount":1,"emails":"kiettt6@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zlp-releaseguard","slug":"zlp-releaseguard"},{"no":211,"team":"ZOP MC 2","track":"Automation & Integration","vote":1,"memberCount":3,"emails":"thamlh@vng.com.vn, trungdb@vng.com.vn, lehn@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/pdf-fix-agent","slug":"pdf-fix-agent"},{"no":212,"team":"VUXCA","track":"Agentic Assistant","vote":1,"memberCount":3,"emails":"vult8@vng.com.vn, khuongnd2@vng.com.vn, canhnm@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/cashgpt","slug":"cashgpt"},{"no":213,"team":"Loandt","track":"Agentic Assistant","vote":1,"memberCount":1,"emails":"loandt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/loandt-ai-agent","slug":"loandt-ai-agent"},{"no":214,"team":"IamAN","track":"Agentic Assistant","vote":0,"memberCount":1,"emails":"anvth@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/campaign-setup-assistant","slug":"campaign-setup-assistant"},{"no":215,"team":"BUG","track":"Automation & Integration","vote":0,"memberCount":3,"emails":"bangdq@vng.com.vn, huydbq@vng.com.vn, toanpd@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/fund-safety-auditor","slug":"fund-safety-auditor"},{"no":216,"team":"andy","track":"Agentic Assistant","vote":0,"memberCount":1,"emails":"andy@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/vnstock-explainer","slug":"vnstock-explainer"},{"no":217,"team":"Wityynerd","track":"Data Analysis","vote":0,"memberCount":1,"emails":"trangpm2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/analysis-agent-ai","slug":"analysis-agent-ai"},{"no":218,"team":"Deep Thinkers","track":"Agentic Assistant","vote":0,"memberCount":3,"emails":"longvt@vng.com.vn, nghita@vng.com.vn, chintk5@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/contract-term-management-agent","slug":"contract-term-management-agent"},{"no":219,"team":"KVH","track":"Automation & Integration","vote":0,"memberCount":2,"emails":"khangnl2@vng.com.vn, huyentm2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/red-devil-insights-engine","slug":"red-devil-insights-engine"},{"no":220,"team":"Work Otherwise","track":"Agentic Assistant","vote":0,"memberCount":3,"emails":"canhnh@vng.com.vn, hiepndh@vng.com.vn, thanhlt3@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/schedule-assistant","slug":"schedule-assistant"},{"no":221,"team":"AITree","track":"Data Analysis","vote":0,"memberCount":1,"emails":"longht2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zalopay-data-platform-ai","slug":"zalopay-data-platform-ai"},{"no":222,"team":"Chansey","track":"Agentic Assistant","vote":0,"memberCount":2,"emails":"tinvt3@vng.com.vn, hailt5@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/bug-triage-agent","slug":"bug-triage-agent"},{"no":224,"team":"TitansAI","track":"Automation & Integration","vote":0,"memberCount":2,"emails":"xuannpp@vng.com.vn, khangnl@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/configfeeagent","slug":"configfeeagent"},{"no":225,"team":"Agent visualize","track":"Automation & Integration","vote":0,"memberCount":1,"emails":"thuyptt8@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/diagram-tool","slug":"diagram-tool"},{"no":226,"team":"CHIMBAOBAO","track":"Data Analysis","vote":0,"memberCount":1,"emails":"thuyvtt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/merchant-payout-analyst","slug":"merchant-payout-analyst"},{"no":227,"team":"Trương Ngọc Nghĩa","track":"Data Analysis","vote":0,"memberCount":1,"emails":"nghiatn@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/incident-insight-agent","slug":"incident-insight-agent"},{"no":228,"team":"No Star Where","track":"Automation & Integration","vote":0,"memberCount":3,"emails":"nhint6@vng.com.vn, hauvt@vng.com.vn, nhuvtq2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/easy-lazy-morning","slug":"easy-lazy-morning"},{"no":229,"team":"Phải làm được 1 con AI","track":"Agentic Assistant","vote":0,"memberCount":2,"emails":"thiennp2@vng.com.vn, thiennp2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zalopay-bd-supporters","slug":"zalopay-bd-supporters"},{"no":230,"team":"Minh","track":"Data Analysis","vote":0,"memberCount":1,"emails":"MinhDH5@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/meeting-preparation-agent","slug":"meeting-preparation-agent"},{"no":231,"team":"bach dep zai","track":"Agentic Assistant","vote":0,"memberCount":1,"emails":"bachnt@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/jira-assistant-bot","slug":"jira-assistant-bot"},{"no":232,"team":"Solo","track":"Automation & Integration","vote":0,"memberCount":1,"emails":"vucm@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/zalo-news-bot-v4","slug":"zalo-news-bot-v4"},{"no":234,"team":"fsds","track":"Agentic Assistant","vote":0,"memberCount":2,"emails":"vinhtx2@vng.com.vn, nhanp@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/secwatch","slug":"secwatch"},{"no":235,"team":"QH","track":"Automation & Integration","vote":0,"memberCount":2,"emails":"quochla@vng.com.vn, quochla@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/fintech-news-bot","slug":"fintech-news-bot"},{"no":236,"team":"GoalWise","track":"Agentic Assistant","vote":0,"memberCount":1,"emails":"luanna@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/browser-agent","slug":"browser-agent"},{"no":237,"team":"AgentX","track":"Agentic Assistant","vote":0,"memberCount":1,"emails":"huypva@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/integration-support-assistant","slug":"integration-support-assistant"},{"no":238,"team":"LADYBUG","track":"Agentic Assistant","vote":0,"memberCount":3,"emails":"huongntd3@vng.com.vn, hapn2@vng.com.vn, anhnn10@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/telco-daily-pfm-agent","slug":"telco-daily-pfm-agent"},{"no":239,"team":"Team đi học","track":"Automation & Integration","vote":0,"memberCount":1,"emails":"huyvha@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/app-review-agnet","slug":"app-review-agnet"},{"no":240,"team":"To Infinity And Beyond","track":"Agentic Assistant","vote":0,"memberCount":3,"emails":"cannm@vng.com.vn, hoavmq@vng.com.vn, hattn2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/claw-a-thon-travel","slug":"claw-a-thon-travel"},{"no":241,"team":"MLP","track":"Automation & Integration","vote":0,"memberCount":2,"emails":"minh2@vng.com.vn, khoinlm2@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/agentqa","slug":"agentqa"},{"no":242,"team":"Trần Tấn Đạt","track":"Agentic Assistant","vote":0,"memberCount":2,"emails":"Dattt14@vng.com.vn, Dattt14@vng.com.vn","link":"https://claw-a-thon.greennode.ai/project/nghien-cuu-luong","slug":"nghien-cuu-luong"}];
+const MAX_VOTE = 55;
+
+// Baked extras data — thumbnail, description, title for each project (scraped from Clawathon site)
+const BAKED_EXTRAS = {"meme-maker":{"thumbnail":"https://statics-green-node.vcdn.com.vn/107_d9a2ca57d1.jpg","description":"Ứng dụng tạo meme tiếng Việt bằng Streamlit, tích hợp AI caption, thư viện ảnh và lưu trữ S3. Tính n...","title":"Meme-maker"},"bd-intelligence-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/39_29ab44551e.png","description":"Trong môi trường fintech cạnh tranh cao, đội ngũ Business Development phải liên tục theo dõi thị trư...","title":"BD INTELLIGENCE AGENT"},"paylater-growth-strategy-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/193_84244adf17.png","description":"PayLater Growth Strategy Agent Vấn đề: Key Account Manager và đội Commercial Analytics của Zalopay P...","title":"PayLater Growth Strategy Agent"},"bot-bank-re":{"thumbnail":"https://statics-green-node.vcdn.com.vn/227_1946d36915.jpg","description":"Tên Agent: Bank Reconciliation Agent (AI Đối Chiếu Ngân Hàng) Vấn đề: Đối chiếu sao kê ngân hàng và ...","title":"BOT bank RE"},"bizbot":{"thumbnail":"https://statics-green-node.vcdn.com.vn/129_a7d0357741.jpg","description":"Vấn đề: Chủ shop, tiểu thương và hộ kinh doanh Việt Nam thường không rành thuế, pháp lý và tài chính...","title":"BizBot"},"funnel-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/111_5376678359.jpeg","description":"Funnel Agent là trợ lý vận hành cho các nghiệp vụ \"funnel\". Demo funnel có 4 bước Traffic → Submissi...","title":"Funnel Agent"},"marker-checker":{"thumbnail":"https://statics-green-node.vcdn.com.vn/161_9e1c6f9b7e.png","description":"Marker Checker – Biến Quy Trình Phê Duyệt Thành Một Cuộc Hội Thoại Đơn Giản Trong nhiều tổ chức, việ...","title":"Marker Checker"},"bookbird":{"thumbnail":"https://statics-green-node.vcdn.com.vn/23_7bffa3bc03.png","description":"Mỗi lần đặt phòng họp, nhân viên mất 5–10 phút: mở lịch từng phòng, canh khung giờ trống, rồi tự soạ...","title":"BookBird"},"zalopay-505":{"thumbnail":"https://statics-green-node.vcdn.com.vn/124_1d0a8f59c5.png","description":"Với Zalopay, khủng hoảng truyền thông có thể khiến trải nghiệm người dùng suy giảm, niềm tin thương ...","title":"Zalopay 505"},"tro-ly-ai-tra-cuu-thu-tuc-hanh-chinh-viet-nam":{"thumbnail":"https://statics-green-node.vcdn.com.vn/204_ddd59809d5.png","description":"Trợ lý AI Tra cứu Thủ tục Hành chính Việt Nam (1) Vấn đề: Người dân Việt Nam thường mất nhiều thời g...","title":"Trợ lý AI Tra cứu Thủ tục Hành chính Việt Nam"},"schedule-assistant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/202_a128166c07.jpg","description":"Schedule Assistant là một ứng dụng quản lý lịch trình cá nhân toàn diện, hỗ trợ cả desktop (Electron...","title":"Schedule Assistant"},"tro-ly-tuyen-dung":{"thumbnail":"https://statics-green-node.vcdn.com.vn/168_16bedcbf06.png","description":"Interview Support Agent là trợ lý AI hỗ trợ HR và Line Manager trong toàn bộ quá trình tuyển dụng, g...","title":"Trợ lý tuyển dụng"},"zalopay-wiki-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/54_a0b252eda5.png","description":"Zalopay Wiki Agent giải quyết vấn đề kiến thức nằm rải rác giữa nhiều team và phụ thuộc vào “đúng ng...","title":"Zalopay Wiki Agent"},"queo-solution-tool-and-agent-nen-tang-tri-thuc-hop-nhat-360":{"thumbnail":"https://statics-green-node.vcdn.com.vn/181_a23948e9d5.png","description":"Vấn đề giải quyết Tri thức doanh nghiệp bị cô lập tại các \"ốc đảo dữ liệu\" phân mảnh (Jira, Confluen...","title":"Quéo Solution Tool & Agent: Nền tảng Tri thức Hợp nhất 360°"},"qc-analysic-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/119_7b6dd4e756.jpg","description":"Vấn đề Hiện tại sau khi QC đánh giá lỗi của nhân viên, nhân viên cần tự kiểm tra lại từng ticket và ...","title":"QC Analysic Agent"},"agent-ke-toan":{"thumbnail":"https://statics-green-node.vcdn.com.vn/238_c4f7059bf6.png","description":"Agent Kế Toán không chỉ là một chatbot; đây là một thực thể AI được định hình với kiến thức chuyên m...","title":"agent-ke-toan"},"nodez-hub":{"thumbnail":"https://statics-green-node.vcdn.com.vn/65_395d95efb4.png","description":"Situation. Chương trình UGC hàng tháng của Zalopay, với 15+ creators gồm 2 giai đoạn: pre-air (nộp, ...","title":"NodeZ Hub"},"configfeeagent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/79_04b5d3bbd8.png","description":"Vấn đề Hiện tại, mỗi khi Business yêu cầu thay đổi cấu hình phí (tạo mới, cập nhật, hoặc xoá rule), ...","title":"ConfigFeeAgent"},"artemis-vu-tru-do-dac-x-phien-cho-tren-may":{"thumbnail":"https://statics-green-node.vcdn.com.vn/38_50a9aef00b.jpg","description":"là AI agent được xây dựng để giải quyết một vấn đề rất đời thường nhưng thường gây mất thời ...","title":"Artemis - Vũ trụ đồ đạc x Phiên chợ trên mây"},"ai-onboarding":{"thumbnail":"https://statics-green-node.vcdn.com.vn/83_878eee9e73.png","description":"AI Onboarding giải quyết bài toán tiếp cận và tìm kiếm kiến thức dự án khi tài liệu bị phân tán ở nh...","title":"AI Onboarding"},"zalopay-data-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/176_6fcbb28528.png","description":"Một Chat Agent hỗ trợ phân tích số liệu (Data Analysis) & viết báo cáo tự động ngay trong Microsoft ...","title":"Zalopay Data Agent"},"incident-insight-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/198_3b9900512f.png","description":"Agent giải quyết vấn đề gì? Các team engineering/operations mất hàng giờ để review thủ công các inci...","title":"incident-insight-agent"},"merchant-campaign-email-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/218_b706100a47.png","description":"Vấn đề: Đội ngũ kinh doanh Zalopay mất nhiều thời gian soạn thủ công email đề xuất hợp tác CTKM cho ...","title":"Merchant Campaign Email Agent"},"jira-assistant-bot":{"thumbnail":"https://statics-green-node.vcdn.com.vn/11_3666511614.jpeg","description":"Việc tạo Jira Ticket thường mất nhiều thời gian vì yêu cầu thường mơ hồ, thiếu context kỹ thuật, và ...","title":"Jira Assistant Bot"},"contract-term-management-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/36_34f9192e42.jpg","description":"(1) Vấn đề cần giải quyết Việc quản lý vòng đời hợp đồng thường bằng Excel, email hoặc theo dõi thủ ...","title":"Contract Term Management Agent"},"mathplay-studio":{"thumbnail":"https://statics-green-node.vcdn.com.vn/221_e60f860245.png","description":"MathPlay Studio — Gia sư Toán AI cho học sinh Tiểu học MathPlay Studio là nền tảng học toán tương tá...","title":"MathPlay Studio"},"tomo":{"thumbnail":"https://statics-green-node.vcdn.com.vn/22_00af249c2d.jpg","description":"tòmò — tầng input tư liệu cho các AI agent. Trong thời đại AI khi model và compute đã thành hàng chợ...","title":"tòmò"},"salesweather-24h":{"thumbnail":"https://statics-green-node.vcdn.com.vn/123_18b8c725a6.png","description":"(1) Vấn đề giải quyết: Các anh salesman thường xuyên phải di chuyển liên tục qua nhiều tỉnh thành để...","title":"SalesWeather 24H"},"campaign-setup-assistant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/158_43de7d1268.png","description":"Campaign Setup Assistant được xây dựng để giải quyết một vấn đề mà đội Product Operations thường xuy...","title":"Campaign Setup Assistant"},"cashbook-assistant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/233_232fc42b0e.jpg","description":"(1) Vấn đề giải quyết: Cuối mỗi ngày, kế toán phải đối chiếu thủ công nguồn dữ liệu (file thanh toán...","title":"Cashbook Assistant"},"merchant-data-analysis":{"thumbnail":"https://statics-green-node.vcdn.com.vn/220_9e8e97e3b3.png","description":"Merchant Data Analysis Agent là trợ lý phân tích dữ liệu dành cho team kinh doanh nói chung và Accou...","title":"Merchant Data Analysis"},"absol-ai":{"thumbnail":"https://statics-green-node.vcdn.com.vn/113_dbe4ba06ce.png","description":"Absol AI giải quyết bài toán điều tra và xử lý sự cố dữ liệu trong các hệ thống dữ liệu hiện đại. Đố...","title":"Absol AI"},"bank-reconcile-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/201_8cee15bf5c.jpg","description":"Đối Soát Phí Giao Dịch ZION×ĐỐI TÁC -Vấn đề. Mỗi kỳ, đội vận hành phải rà soát hàng trăm nghìn giao ...","title":"bank-reconcile-agent"},"project-intelligence-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/125_ac46f10c13.png","description":"Vấn đề Tại Zalopay, dự án liên phòng ban được phối hợp qua email, Teams chat và họp song song — tạo ...","title":"Project Intelligence Agent"},"bot-nay-cuu-duoc-may":{"thumbnail":"https://statics-green-node.vcdn.com.vn/199_7da7b584ff.jpg","description":"Vấn đề: Nhân viên kinh doanh tại các doanh nghiệp mất 15–30 phút mỗi lần soạn hợp đồng theo mẫu — ph...","title":"Bot Này Cứu Được Mày"},"be-hadi-bao-hiem":{"thumbnail":"https://statics-green-node.vcdn.com.vn/223_a2ad0cd65e.jpg","description":"Vấn đề: Bảo hiểm là mảng mới của Zalopay - tăng trưởng nhanh, dữ liệu nhiều nhưng toàn bộ việc theo ...","title":"Bé Hadi Bảo hiểm"},"ai-memo-intelligence":{"thumbnail":"https://statics-green-node.vcdn.com.vn/179_3776cac10b.png","description":"Vấn đề đội giải quyết Mỗi tháng, ban lãnh đạo và các team thực thi viết memo (ưu tiên, trạng thái, n...","title":"AI Memo Intelligence"},"zalopay-bd-supporters":{"thumbnail":"https://statics-green-node.vcdn.com.vn/94_d39e5eda02.png","description":"AI của mình sẽ là 1 trợ lý cho mỗi BD khi BD cần tìm lại thông tin (trong các file upload) nội bộ, đ...","title":"Zalopay BD Supporters"},"contract-review-agent-zop-mc":{"thumbnail":"https://statics-green-node.vcdn.com.vn/214_e9222b636b.jpg","description":"Vấn đề: Quy trình review Hợp đồng/Phụ lục hiện đang được thực hiện thủ công, tốn workload. Người dùn...","title":"Contract Review Agent"},"agentqa":{"thumbnail":"https://statics-green-node.vcdn.com.vn/26_2af5076e97.png","description":"QA Copilot là AI Agent được thiết kế để hỗ trợ QA Engineer trong toàn bộ vòng đời kiểm thử phần mềm,...","title":"AgentQA"},"bizgrow":{"thumbnail":"https://statics-green-node.vcdn.com.vn/157_61d418e96e.jpg","description":"Vấn đề: Doanh nghiệp lãng phí mạng lưới quan hệ khổng lồ của hàng nghìn nhân viên; đội Sales/Marketi...","title":"BizGrow"},"podcast-vocab":{"thumbnail":"https://statics-green-node.vcdn.com.vn/106_99d92deef4.png","description":"Bạn đang nghe podcast tiếng Anh mỗi ngày. Nghe xong, thấy hay, rồi… quên. Không phải vì bạn lười — m...","title":"Podcast Vocab"},"banhcanhbeobum":{"thumbnail":"https://statics-green-node.vcdn.com.vn/172_51b716b809.jpg","description":"Sản phẩm là AI Agent được dùng để giới thiệu các dịch vụ tài chính của Zalopay cũng như hướng dẫn cá...","title":"BanhcanhBeoBum"},"report-generating-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/131_959dfd095d.jpg","description":"Mỗi tháng, team Business phải mất vài giờ để tổng hợp báo cáo theo cách thủ công — follow email cập ...","title":"Report Generating Agent"},"vng-room-booking-bot":{"thumbnail":"https://statics-green-node.vcdn.com.vn/222_7211910814.png","description":"Tại VNG, phòng họp có thiết bị hội nghị luôn đầy lịch ngay sau 00:00 — thời điểm hệ thống mở booking...","title":"VNG Room Booking Bot"},"riskmind-ai":{"thumbnail":"https://statics-green-node.vcdn.com.vn/95_357d251f9b.png","description":"RiskMind là trợ lý AI dành cho các thành viên Risk Team và các bên liên quan cần tra cứu nhanh thông...","title":"RiskMind AI"},"ai-coach-development":{"thumbnail":"https://statics-green-node.vcdn.com.vn/6_8596581852.jpg","description":"AI Development Coach Nhiều nhân viên chưa hiểu rõ điểm mạnh, điểm cần cải thiện và những năng lực cầ...","title":"AI Coach Development"},"contract-review-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/15_ae99c4202d.jpg","description":"Trích xuất các điều khoản cần thiết trong hợp đồng (view FP&A), gồm contract summary, commericial te...","title":"Contract_Review_Agent"},"stock-knowledge-hub":{"thumbnail":"https://statics-green-node.vcdn.com.vn/200_3728c5411a.png","description":"Vấn đề đội giải quyết: Các đội ngũ Product, BA, QA và Engineering phải làm việc với hàng trăm tài li...","title":"Stock Knowledge Hub"},"user-story-compliance-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/118_d05018ba67.png","description":"User Story Compliance Agent — AI chấm tuân thủ Change Request theo template Trong quá trình làm việc...","title":"User Story Compliance Agent"},"ai-design-critic-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/236_e0d1ebd647.jpg","description":"AI Design Critic Agent là trợ lý AI được xây dựng với mục đích đánh giá thiết kế, cũng như quy chuẩn...","title":"AI Design Critic Agent"},"onboarding-buddy":{"thumbnail":"https://statics-green-node.vcdn.com.vn/93_7a0c91d0fe.png","description":"Bắt đầu một công việc mới tại một startup fintech luôn là một trải nghiệm đầy thử thách. Nhân sự mới...","title":"Onboarding Buddy"},"promotion-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/25_87bd4efcd0.jpg","description":"Promotion Forecasting AI Agent là hệ thống đa agent chạy trên LangGraph, giúp các đội Growth Marketi...","title":"Promotion Agent"},"moneyradar":{"thumbnail":"https://statics-green-node.vcdn.com.vn/141_501ed2eac2.png","description":"Money Radar cho phép bất kỳ ai cũng có thể đặt câu hỏi về dữ liệu chuyển khoản của mình bằng ngôn ng...","title":"MoneyRadar"},"xuat-hoa-don-agent-zalopay-box":{"thumbnail":"https://statics-green-node.vcdn.com.vn/212_cd358d48c7.png","description":"Mỗi ngày, Team OP Soundbox phải đối soát thủ công dữ liệu đơn hàng để theo dõi trạng thái và chuẩn b...","title":"Xuất Hóa Đơn Agent — Zalopay Box"},"growth-assistant-zalopay-mobility-services":{"thumbnail":"https://statics-green-node.vcdn.com.vn/213_bc3ef8dac0.png","description":"Vấn đề đội giải quyết. Mỗi tuần, Growth Marketer của Zalopay Mobility tốn 2–3 tiếng ghép số thủ công...","title":"Growth Assistant - Zalopay Mobility Services"},"integration-support-assistant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/148_1a18dfffbe.png","description":"Integration Support Assistant là trợ lý AI hỗ trợ Merchant và đội ngũ kỹ thuật tra cứu tài liệu, giả...","title":"Integration Support Assistant"},"dataholic":{"thumbnail":"https://statics-green-node.vcdn.com.vn/69_9b2d068002.png","description":"Data Analyst Assistant Talk to your data. Ship insights. Bạn là business, PO hay developer, đang có ...","title":"Dataholic"},"thu-dong":{"thumbnail":"https://statics-green-node.vcdn.com.vn/74_346283ab9a.png","description":"Khi sử dụng AI, mọi người đều biết: prompt thật kỹ, upload đúng file, giải thích từng cái một — có v...","title":"Thư Đồng"},"privacy-intake-chatbot":{"thumbnail":"https://statics-green-node.vcdn.com.vn/138_27dbacde3b.jpg","description":"Data Privacy Intake Agent là trợ lý AI chuyên biệt giúp team Biz/PO tại công ty tối ưu hóa quy trình...","title":"Privacy Intake Chatbot"},"telco-daily-pfm-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/73_f67ab01aef.png","description":"(1) Mỗi sáng Growth MKT PIC mất 15–20 phút mở 4-5 dashboard khác nhau để check và tổng hợp số liệu h...","title":"Telco Daily PFM Agent"},"3anhem-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/120_5a3a1cd1df.png","description":"Dev mất hàng giờ mỗi ngày review PR, viết tài liệu, đọc hiểu codebase lạ. Còn người không biết lập t...","title":"3anhem-agent"},"bee-khong-de-ban-mot-minh":{"thumbnail":"https://statics-green-node.vcdn.com.vn/114_1e7e5a23e2.png","description":"Vấn đề: Khi CSKH trong lĩnh vực fintech chuyển dịch từ tổng đài sang kênh văn bản — chat trong app, ...","title":"Bee — Không Để Bạn Một Mình"},"personal-daily-digest":{"thumbnail":"https://statics-green-node.vcdn.com.vn/66_d6baeff6f4.png","description":"Vấn đề: Các Engineer, QA, PM và team lead thường phải theo dõi nhiều ticket Jira cùng lúc nhưng chỉ ...","title":"Personal Daily Digest"},"gold-companion":{"thumbnail":"https://statics-green-node.vcdn.com.vn/2_0cb7609343.jpeg","description":"Người Việt xem vàng là kênh tích sản quen thuộc, nhưng hầu hết chỉ biết \"giá vàng hôm nay\" mà không ...","title":"Gold Companion"},"alp-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/126_f5995b5611.png","description":"VNG là \"ngôi nhà thứ 2\" của nhiều Starters. Nhưng sau giờ làm, nhiều bạn vẫn chưa biết mình có thể l...","title":"ALP Agent"},"config-drift-detector":{"thumbnail":"https://statics-green-node.vcdn.com.vn/29_8d431d1868.jpg","description":"Mô tả dự án — Config Drift Detector (1) Vấn đề đội giải quyết Các kỹ sư thường chỉ phát hiện ra sự k...","title":"Config Drift Detector"},"voucher-ops-ai":{"thumbnail":"https://statics-green-node.vcdn.com.vn/80_40db28f3e0.jpg","description":"(1) Vấn đề đội giải quyết: Vận hành một campaign voucher tại ZLP tốn nhiều thời gian vì phải phối hợ...","title":"Voucher Ops AI"},"cuc-cung-agent-platform":{"thumbnail":"https://statics-green-node.vcdn.com.vn/10_d7f60521ad.png","description":"Cục Cưng - Agent Platform giải quyết bài toán tri thức doanh nghiệp bị phân tán, khó tái sử dụng và ...","title":"Cục cưng - Agent Platform"},"can-la-co-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/88_0d362cf3aa.png","description":"AI Agent: Tự động tổng hợp comment và nội dung chỉnh sửa từ nhiều file Word Bài toán Trong quá trình...","title":"Cần là có Agent"},"qualitytrack-cs":{"thumbnail":"https://statics-green-node.vcdn.com.vn/115_e1dcc84741.png","description":"Tại Zalopay, đội ngũ QC mỗi tháng phải mất hàng giờ để thủ công tổng hợp dữ liệu từ nhiều file khác ...","title":"QualityTrack CS"},"tax-ai":{"thumbnail":"https://statics-green-node.vcdn.com.vn/216_6bbfb5d782.png","description":"Tra cứu mã số thuế là hoạt động tìm kiếm và kiểm tra thông tin của cá nhân, hộ kinh doanh hoặc doanh...","title":"Tax AI"},"nagiosai":{"thumbnail":"https://statics-green-node.vcdn.com.vn/149_d5ab723c52.png","description":"(1) Vấn đề Hệ thống alert gửi hàng trăm cảnh báo mỗi ngày nhưng phần lớn là false alarm — Nagios pol...","title":"nagiosAI"},"zalopay-aml-ai-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/237_4236bb91f9.jpg","description":"Team CPL - ZaloPay chịu trách nhiệm giám sát giao dịch theo quy định phòng, chống rửa tiền (AML). Qu...","title":"Zalopay - AML AI Agent"},"meeting-preparation-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/19_85b58871c3.png","description":"Meeting Prep Agent — Trợ lý chuẩn bị cuộc gặp cho đội BD/AM của Zalopay Trước mỗi buổi làm việc với ...","title":"Meeting Preparation Agent"},"monitor-transation":{"thumbnail":"https://statics-green-node.vcdn.com.vn/215_7ace75cc97.jpg","description":"AI Agent giám sát và phân tích giao dịch tài chính Agent hỗ trợ nhân viên Đối soát – Vận hành theo d...","title":"Monitor-transation"},"dispute-automation-tool":{"thumbnail":"https://statics-green-node.vcdn.com.vn/151_996ae051ba.jpg","description":"Vấn đề cần giải quyết Với mỗi case khiếu nại, OP phải kiểm tra thông tin liên quan, lập chứng từ phù...","title":"Dispute Automation Tool"},"voc-root-cause-agent-chatbot-csat":{"thumbnail":"https://statics-green-node.vcdn.com.vn/75_9241309f7c.jpg","description":"VOC Root-Cause Agent — Phân tích CSAT Chatbot cho Customer Support Khi cần phân tích CSAT của kênh C...","title":"VOC Root-Cause Agent - Chatbot CSAT"},"fund-safety-auditor":{"thumbnail":"https://statics-green-node.vcdn.com.vn/110_82d309b4f5.png","description":"Người dùng chỉ cần cung cấp source code, Git repository hoặc gói mã nguồn ZIP. Fund Safety Auditor s...","title":"Fund Safety Auditor"},"clawsome-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/152_9efabd21f0.png","description":"(1) Vấn đề Product Owner và Business team phải tổng hợp data từ nhiều nguồn để monitor sức khỏe sản ...","title":"Clawsome Agent"},"poseidon-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/44_ce62cc5e9e.png","description":"Được xây dựng trên hạ tầng GreenNode AgentBase theo mô hình Spec-Driven Development, Poseidon tự độn...","title":"poseidon-agent"},"fintech-news-weekly-scan":{"thumbnail":"https://statics-green-node.vcdn.com.vn/91_68af8f73a2.png","description":"Fintech News Weekly Scan Agent là AI research agent phục vụ team BD và Product của Zalopay. Mỗi lần ...","title":"Fintech News Weekly Scan"},"zalopay-insurance-consultant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/211_cfbef2f41e.jpg","description":"Insurance Consultant là AI Agent hỗ trợ người dùng Zalopay tìm hiểu, so sánh và lựa chọn các sản phẩ...","title":"Zalopay Insurance Consultant"},"babywhy":{"thumbnail":"https://statics-green-node.vcdn.com.vn/128_afd1033cd3.png","description":"BabyWhy là một AI Decision Clarity Coach giúp Product Owner và Product Manager giải quyết tình trạng...","title":"BabyWhy"},"zlp-releaseguard":{"thumbnail":"https://statics-green-node.vcdn.com.vn/175_d521fd60a2.jpg","description":"Trong bối cảnh ZaloPay đang tiếp tục nâng cao chất lượng sản phẩm, năng lực kỹ thuật và tính nhất qu...","title":"ZLP ReleaseGuard"},"opsone":{"thumbnail":"https://statics-green-node.vcdn.com.vn/242_a69331edc5.png","description":"(1) Vấn đề: Hệ thống thanh toán ZaloPay kết nối với nhiều provider (ESALE, IMEDIA, SHOPPAY) xử lý hà...","title":"OpsOne"},"bach-khoa-toan-thu-ops-ai-knowledge-base-ops":{"thumbnail":"https://statics-green-node.vcdn.com.vn/142_c2b8a43717.jpg","description":"Merchant Operations xử lý nhiều tình huống vận hành phức tạp mỗi ngày, đòi hỏi nhân viên nắm lượng l...","title":"Bách Khoa Toàn Thư Ops - AI Knowledge Base Ops"},"zalopay-merchant-analytics":{"thumbnail":"https://statics-green-node.vcdn.com.vn/147_fa81f7a72a.png","description":"Zalopay Merchant Analytics là hệ thống phân tích hiệu suất thanh toán đa tác tử (multi-agent) cho cá...","title":"Zalopay Merchant Analytics"},"cashgpt":{"thumbnail":"https://statics-green-node.vcdn.com.vn/173_1134b04a43.jpg","description":"1) Vấn đề: Người đi làm thường chi tiêu vượt mức mà không biết tiền đi đâu — ghi chép thủ công quá m...","title":"CashGPT"},"baobay-reply-assistant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/226_8b0a5ada09.png","description":"Agent Hỗ Trợ Soạn Thảo Phản Hồi Khách Hàng Vấn đề giải quyết Bộ phận chăm sóc khách hàng hàng ngày t...","title":"baobay-reply-assistant"},"claw-a-thon-cp-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/206_f34b1fa6c4.png","description":"(1. Vấn đề giải quyết) Agent giải quyết bài toán tốn nhiều thời gian khi debug thủ công dữ liệu Even...","title":"claw-a-thon-cp-agent"},"cashback-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/35_cb0245859f.jpg","description":"Cashback Agent giải quyết vấn đề người dùng khó tối ưu hoàn tiền thẻ tín dụng khi sở hữu nhiều thẻ v...","title":"Cashback Agent"},"browser-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/144_b9c8d55f74.png","description":"Browser Agent biến Chrome thành một AI agent nhận lệnh bằng ngôn ngữ tự nhiên và tự động thực hiện t...","title":"Browser Agent"},"scribe-messy-transcripts-in-cited-report-out":{"thumbnail":"https://statics-green-node.vcdn.com.vn/40_c91774a087.png","description":"Scribe là AI agent biến mọi bản ghi âm lộn xộn đầy \"uhm\", \"à\", \"ờ lagg\", cắt ngang giữa chừng, từ ng...","title":"Scribe - messy transcripts in, cited report out"},"ai-agent-analytics":{"thumbnail":"https://statics-green-node.vcdn.com.vn/103_4158503011.png","description":"ZaloPay Home Analytics Agent Mô tả Agent Vấn đề Đội PO sản phẩm Home ZaloPay đang mất nhiều thời gia...","title":"AI Agent Analytics"},"phu-gia-cs-zalopay":{"thumbnail":"https://statics-green-node.vcdn.com.vn/245_a38f882064.png","description":"Trong một CS team 70 người, không phải nhân viên nào cũng dám hỏi thẳng manager về kỳ vọng, định hướ...","title":"Phú Gia_CS Zalopay"},"legal-zalopay-contract-lens":{"thumbnail":"https://statics-green-node.vcdn.com.vn/43_5432ea60ec.jpg","description":"⚖ Legal ZaloPay Contract Lens — Rà soát hợp đồng thông minh, không bỏ sót rủi ro Rà soát hợp đồng t...","title":"Legal Zalopay Contract Lens"},"temporal-loom":{"thumbnail":"https://statics-green-node.vcdn.com.vn/13_ab836dff9c.png","description":"Trong các công ty, các phòng ban thường mất hàng giờ mỗi ngày cho những công việc lặp lại, tra cứu d...","title":"Temporal Loom"},"bug-triage-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/61_00acbc2431.png","description":"Bug Triage Agent — Trợ lý phân loại bug tự động Bug Triage Agent giúp đội QA và dev đánh giá mức ưu ...","title":"Bug Triage Agent"},"incident-investigation-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/101_8a436cf083.jpeg","description":"Agent điều tra nguyên nhân sự cố Vấn đề Khi một microservice gặp sự cố, kỹ sư on-call phải lục song ...","title":"Incident Investigation Agent"},"oss-advisor":{"thumbnail":"https://statics-green-node.vcdn.com.vn/55_ea3bbfd8e0.png","description":"OSS Advisor — Mô tả Use Case Vấn đề Các đội phát triển thêm thư viện mã nguồn mở theo cảm tính, dẫn ...","title":"OSS Advisor"},"nghien-cuu-luong":{"thumbnail":"https://statics-green-node.vcdn.com.vn/98_a09b39d716.png","description":"Trong công việc hàng ngày, nhân viên thường mất rất nhiều thời gian tìm kiếm số liệu chính xác từ cá...","title":"Nghiên cứu \"Lượng\""},"vnstock-explainer":{"thumbnail":"https://statics-green-node.vcdn.com.vn/24_61bfafc890.png","description":"VNStock Explainer là trợ lý AI giúp bất kỳ ai hiểu một công ty niêm yết trên sàn chứng khoán Việt Na...","title":"VNStock Explainer"},"agent-mkt-campaign-nap-the-vui":{"thumbnail":"https://statics-green-node.vcdn.com.vn/67_16562a44a8.png","description":"Tên sản phẩm: Hệ thống Chiến dịch AI (AI Campaign System) cho cổng game NapTheVui https://endpoint-7...","title":"Agent MKT Campaign Nap The Vui"},"review-radar-ai":{"thumbnail":"https://statics-green-node.vcdn.com.vn/232_c5baf78cd1.jpeg","description":"Review Radar là AI Agent giúp team Product, Engineering và Customer Support xử lý khối lượng lớn rev...","title":"Review Radar AI"},"agentt":{"thumbnail":"https://statics-green-node.vcdn.com.vn/180_11fd77b0dd.png","description":"Vấn đề: •Mỗi tháng PO phải tự nhớ lại tính năng đã release, sự cố và quyết định, tự kết nối chúng vớ...","title":"agentT"},"toro-cs-assistant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/162_3530f90d14.png","description":"Zalopay CS Agent — Toro CS Assistant Nhân viên CS Zalopay hàng ngày phải xử lý hàng trăm ticket, phầ...","title":"Toro CS Assistant"},"personal-work-assistant-tiennhpv-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/229_b4548d8a2c.png","description":"AI Agent Microsoft 365 — Personal Work Assistant Bạn có thể quên, agent thì không. Một ngày làm việc...","title":"Personal Work Assistant (TienNHPV Agent)"},"sre-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/177_bdc935307c.png","description":"SRE Agent là một trợ lý ảo tích hợp trên Telegram, hỗ trợ đội ngũ vận hành (SRE/DevOps) giám sát, ki...","title":"sre-agent"},"mini-erp-onboarding-new-merchant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/108_9c910a49d7.jpg","description":"Zalopay Multi-Agent System – mini-ERP chuẩn hóa quy trình vận hành Nền tảng AI multi-agent giúp chuẩ...","title":"Mini ERP - Onboarding new merchant"},"red-devil-insights-engine":{"thumbnail":"https://statics-green-node.vcdn.com.vn/190_110a607fb8.png","description":"Market Research Agent AI Các doanh nghiệp thường mất nhiều thời gian để thu thập, kiểm chứng và tổng...","title":"Red Devil Insights Engine"},"piano-teacher":{"thumbnail":"https://statics-green-node.vcdn.com.vn/97_2f6d73a1bf.png","description":"AI Piano Coach – Gia sư Piano AI Cá nhân Phần lớn người học piano bỏ cuộc trong năm đầu tiên không p...","title":"Piano Teacher"},"nova-all-in-one-onboarding-ai-agent-assistant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/37_cea5fa9466.png","description":"Nova - Quản lý Onboarding bằng Trí tuệ Nhân tạo 24/7 Nova là trợ lý AI thông minh được thiết kế để đ...","title":"Nova - All-in-one Onboarding AI Agent Assistant"},"tro-ly-esale":{"thumbnail":"https://statics-green-node.vcdn.com.vn/243_2690a05f86.png","description":"là hệ thống bán hàng ( thẻ game, thẻ điện thoại, Topup, thanh toán Billing..) online, nhân viê...","title":"Trợ lý Esale"},"z-merchpulse":{"thumbnail":"https://statics-green-node.vcdn.com.vn/166_b44df6ec1c.png","description":"Vấn đề Merchant ZaloPay chỉ thấy doanh thu tổng cuối ngày, không biết nguyên nhân hay thời điểm dòng...","title":"Z_MerchPulse"},"tro-ly-bao-cao-van-hanh":{"thumbnail":"https://statics-green-node.vcdn.com.vn/191_4da0066959.png","description":"Vấn đề: Mỗi ngày, team Operations phải mở file Excel, đọc thủ công hàng trăm dòng để biết task nào t...","title":"TRỢ LÝ BÁO CÁO VẬN HÀNH"},"toro-assistant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/16_7b4360aa13.jpg","description":"Mỗi đợt workshop, đội L&D Zalopay phải tốn hàng giờ liền soạn thư mời, nhắc lịch và theo dõi phản hồ...","title":"Toro Assistant"},"zalopay-complaint-analytics":{"thumbnail":"https://statics-green-node.vcdn.com.vn/127_3d9b6a4272.jpg","description":"Vấn đề: Mỗi ngày, đội Product Zalopay nhận hàng trăm phản ánh người dùng từ nhiều kênh: Jira, Thread...","title":"ZALOPAY COMPLAINT ANALYTICS"},"ai-onboarding-assistant-bot":{"thumbnail":"https://statics-green-node.vcdn.com.vn/140_d5c70b5677.png","description":"Vấn đề: Nhân viên mới tốn thời gian tự tra cứu thông tin onboarding rải rác trên Confluence/Jira, tr...","title":"AI Onboarding Assistant Bot"},"niubi-promo-assistant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/234_4419d30857.jpg","description":"NIUBI PROMO ASSISTANT được xây dựng để giải quyết việc tra cứu thủ công có thể gây ra sai sót cho ag...","title":"NIUBI PROMO ASSISTANT"},"ai-atlas-ai-powered-chinese-learning-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/5_bc0ceb3b7e.jpg","description":"AI Atlas là trợ lý AI giúp người dùng học tiếng Trung theo cách trực quan và dễ ghi nhớ hơn. Thay vì...","title":"AI ATLAS – AI-Powered Chinese Learning Agent"},"recruitment-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/62_0dff0c4985.png","description":"Hiện nay, dữ liệu ứng viên của đội ngũ Tuyển dụng đang phân tán trên nhiều nền tảng như ATS, LinkedI...","title":"Recruitment Agent"},"linktink":{"thumbnail":"https://statics-green-node.vcdn.com.vn/14_d2b2d7df7f.jpg","description":"Vấn đề đội giải quyết: Yêu cầu dữ liệu (data requests) từ các phòng ban gửi đến thường mơ hồ và thiế...","title":"LinkTink"},"imeow-email-assistant-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/33_0f0537c559.jpg","description":"Inbox: 1256 email chưa đọc. Khách hàng cần phản hồi. Sếp cần cập nhật. Đối tác cần fo...","title":"iMeow - Email assistant agent"},"momentum":{"thumbnail":"https://statics-green-node.vcdn.com.vn/71_e439ff60e2.jpg","description":"Momentum lật ngược cách bạn dùng một app to-do. Thay vì ngồi tự nghĩ ra việc cần làm, Momentum để AI...","title":"Momentum"},"ho-kinh-doanh-2026":{"thumbnail":"https://statics-green-node.vcdn.com.vn/244_874b245b7b.jpg","description":"Chatbot AI Hộ Kinh Doanh 2026 trên Zalo và Telegram được xây dựng nhằm giải quyết khó khăn của các h...","title":"Hộ Kinh Doanh 2026"},"vng-meet":{"thumbnail":"https://statics-green-node.vcdn.com.vn/59_534bd00b53.png","description":"VNGMeet - Vì Starter xứng đáng có phòng họp ⚠ Problem Gọi phòng họp ở VNG là vàng vì ngày nào Start...","title":"VNG Meet"},"memoir":{"thumbnail":"https://statics-green-node.vcdn.com.vn/84_b7abf2fac9.png","description":"Memoir - Memory Engine Managing Organizational Intelligence & Resolutions Memoir là ứng dụng ghi nhớ...","title":"Memoir"},"pagefinder":{"thumbnail":"https://statics-green-node.vcdn.com.vn/58_9e5c30101a.png","description":"Vấn đề Khi số lượng tài liệu trên Confluence ngày càng tăng, việc tìm kiếm thông tin trở nên khó khă...","title":"Pagefinder"},"travel-ai-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/60_d3248cdd1c.jpg","description":"TRAVEL AI AGENT - Lương 5 triệu nhưng đi đâu cũng chịu Bạn có từng mở hàng chục tab để tìm địa điểm,...","title":"travel-ai-agent"},"scam-alert-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/17_c3be0cb737.jpg","description":"Giải pháp ScamAlert AI là một AI Agent cho phép người dùng gửi vào bất kỳ nội dung nào đáng ngờ — ti...","title":"scam-alert-agent"},"be-lien-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/217_5b374da426.png","description":"Agent hỗ trợ đội ngũ phát triển phần mềm, đặc biệt là Developer và QA Engineer, trong việc phân tích...","title":"Bé Liên Agent"},"so-be-ngoan-zalopay":{"thumbnail":"https://statics-green-node.vcdn.com.vn/32_b2e8b3df87.jpg","description":"Sổ bé ngoan Zalopay là một trợ lý AI hoạt động ngay trong Microsoft Teams, biến việc gắn kết và ghi ...","title":"Sổ bé ngoan Zalopay"},"contract-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/209_7ca35a2c8a.jpg","description":"Contract Agent: Giải Pháp AI Quản Lý Hợp Đồng Các bộ phận pháp lý và kinh doanh thường phải quản lý ...","title":"Contract Agent"},"merchant-payout-analyst":{"thumbnail":"https://statics-green-node.vcdn.com.vn/7_2d38f4f94a.png","description":"MC Payout Analyst là AI Agent được phát triển bởi đội ngũ Accounting của ZaloPay nhằm cung cấp góc n...","title":"Merchant Payout Analyst"},"fraud-analytics-assistant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/156_9f059a81f7.png","description":"Trong thanh toán số, gian lận diễn biến nhanh và dữ liệu phân tán trên nhiều nguồn khác nhau. Đội ng...","title":"Fraud Analytics Assistant"},"merchant-integration-support":{"thumbnail":"https://statics-green-node.vcdn.com.vn/20_eb3b294993.png","description":"Hỗ trợ Merchant trong suốt quá trình tích hợp bằng cách giải đáp các câu hỏi liên quan đến nghiệp vụ...","title":"Merchant Integration Support"},"sole":{"thumbnail":"https://statics-green-node.vcdn.com.vn/102_2f0d9935b0.png","description":"SOLE – Cá nhân hóa hành trình, tối ưu điểm đến Bạn biết cảm giác này không: lưu cả danh sách video T...","title":"SOLE"},"grc-assistant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/82_1d690a2c5b.png","description":"Assistant là một trợ lý hỏi đáp được xây dựng để hỗ trợ đội Compliance/GRC và người dùng nội bộ ...","title":"GRC Assistant"},"node-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/159_3228d2e230.png","description":"Node Agent Assistant là trợ lý AI hỗ trợ khách hàng cho GreenNode — nền tảng GPU cloud của VNG. Vấn ...","title":"Node Agent"},"put":{"thumbnail":"https://statics-green-node.vcdn.com.vn/145_9bdb3b33b0.png","description":"Vấn đề Nhân viên không bỏ công ty — họ bỏ sếp. Văn hóa thứ bậc Nho giáo khiến việc nói thật với cấ...","title":"Pụt"},"zalopay-data-platform-ai":{"thumbnail":"https://statics-green-node.vcdn.com.vn/134_ade914c841.png","description":"ZaloPay Data Platform AI giải quyết bài toán kiến thức phân mảnh trong nền tảng dữ liệu. Tại ZaloPay...","title":"ZaloPay Data Platform AI"},"hoi-dong-quan-tri-tai-chinh-ai":{"thumbnail":"https://statics-green-node.vcdn.com.vn/90_368041cb61.jpg","description":"Gen Z và Millennials đi làm thường ra quyết định chi tiêu theo cảm xúc nhất thời — không có ai phản ...","title":"Hội đồng quản trị tài chính AI"},"qe-copilot":{"thumbnail":"https://statics-green-node.vcdn.com.vn/155_b112ad7089.png","description":"QE COPILOT — AI-Powered QE QE Engineers thường mất nhiều giờ để đọc requirement, phân tích edge case...","title":"QE Copilot"},"workspace-ai-agent-tom-tat-teams-and-gmail":{"thumbnail":"https://statics-green-node.vcdn.com.vn/122_eb53fcf78b.png","description":"Workspace AI Agent — Đọc thay bạn, làm nổi bật điều quan trọng Mỗi sáng mở máy lên, bạn thấy 300 ...","title":"Workspace AI Agent - Tóm tắt Teams & Gmail"},"signal":{"thumbnail":"https://statics-green-node.vcdn.com.vn/240_5b38e2dfb0.png","description":"Thương hiệu của bạn đang được nhắc đến ngay lúc này. Bạn có biết họ đang nói gì không? Mỗi giờ, hàng...","title":"signal"},"rca-bug-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/235_30c1ba0c7a.png","description":"Vấn đề Khi bug xuất hiện trên môi trường production, team Dev cần thực hiện phân tích nguyên nhân gố...","title":"rca-bug-agent"},"sopie-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/87_3dafea9b80.png","description":"CS team Zalopay từng quản lý SOP, template, và quy trình xử lý ticket trên 3–4 platform riêng lẻ. Th...","title":"SOPie Agent"},"zalopay-ai-agents-cskh-and-jira-analyzer":{"thumbnail":"https://statics-green-node.vcdn.com.vn/178_356fc79812.png","description":"(1) Vấn đề: Nhân viên CSKH ZaloPay mất nhiều thời gian xử lý thủ công từng ticket — phân loại, tìm n...","title":"ZaloPay AI Agents — CSKH & Jira Analyzer"},"jira-master":{"thumbnail":"https://statics-green-node.vcdn.com.vn/174_529dc2b401.png","description":"Jira Agent cho Teams giúp đội ngũ phần mềm biến bất kỳ tin nhắn nào trong Microsoft Teams thành một ...","title":"Jira Master"},"z-agent-one":{"thumbnail":"https://statics-green-node.vcdn.com.vn/182_4117da0be7.png","description":"Z-Agent One là nền tảng AI Customer Service Intelligence được phát triển cho Trung tâm Chăm sóc Khác...","title":"Z-AGENT ONE"},"test-case-generator-and-automation":{"thumbnail":"https://statics-green-node.vcdn.com.vn/70_0ba919121b.jpg","description":"Vấn đề: Trong vòng đời phát triển phần mềm, việc phân tích Tài liệu yêu cầu sản phẩm (PRD) để thiết ...","title":"Test case generator & Automation"},"qc-test-case-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/185_adc25dc3b0.png","description":"Tên use case: Sinh bộ test case tự động từ tài liệu nghiệp vụ Actor: QC/QA Engineer Mô tả: QC Test C...","title":"QC Test Case Agent"},"meeting-insight-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/189_2ac8aa446a.png","description":"Vấn đề Sau mỗi cuộc họp, mọi người thường phải đọc lại transcript dài để tổng hợp nội dung, ghi nhận...","title":"Meeting Insight Agent"},"dagent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/99_368d6311ba.png","description":"Vấn đề Các phòng ban tốn nhiều giờ mỗi khi cần data vì 3 nút thắt: Đứt gãy tri thức: Chỉ số cốt lõi ...","title":"DAGENT"},"lily":{"thumbnail":"https://statics-green-node.vcdn.com.vn/231_9dcf19e87c.png","description":"Lily là gì? Lily là trợ lý học tiếng Anh thông minh, giúp bạn dịch, sửa lỗi, luyện phát âm và hiểu t...","title":"LiLy"},"zalopay-sky-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/130_926c2d5e5e.jpg","description":"Zalopay đang cung cấp nhiều giải pháp thanh toán cho đa dạng nhóm đối tác. Tuy nhiên, quá trình tìm ...","title":"Zalopay Sky Agent"},"ai-summary-judge":{"thumbnail":"https://statics-green-node.vcdn.com.vn/210_69134323cd.png","description":"AI Summary Judge – Dùng AI kiểm tra AI AI Summary Judge là một agent tự động đánh giá chất lượng các...","title":"AI Summary Judge"},"reconagent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/208_1ae6e1e00d.png","description":"Vấn đề Team Operations tại ZaloPay mất 1–1,5 giờ mỗi ngày để đối soát giao dịch với các đối tác như ...","title":"ReconAgent"},"firstmate":{"thumbnail":"https://statics-green-node.vcdn.com.vn/169_da2c046aad.png","description":"FirstMate - AI-Powered DevOps Collaboration Trong môi trường DevOps quy mô lớn, SRE là điểm nghẽn du...","title":"Firstmate"},"zenfix":{"thumbnail":"https://statics-green-node.vcdn.com.vn/34_7c51bf8ded.png","description":"Trong quá trình phát triển phần mềm, một trong những công việc tốn nhiều thời gian nhất không phải l...","title":"Zenfix"},"creative-performance-insight-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/28_89fd034bbd.png","description":"Chúng tôi là 8AM, xây dựng một AI agent giúp đội Growth và UA phân tích hiệu quả creative thực tế từ...","title":"Creative Performance Insight Agent"},"fintech-news-bot":{"thumbnail":"https://statics-green-node.vcdn.com.vn/197_0bfdabbcf6.jpg","description":"Problem statement: Theo dõi tin tức Fintech mỗi ngày đòi hỏi phải lướt qua nhiều trang báo khác nhau...","title":"FinTech News Bot"},"work-task-planner":{"thumbnail":"https://statics-green-node.vcdn.com.vn/207_f2a078b5f7.png","description":"Nhu cầu sắp xếp công việc hiệu quả luôn là mong muốn của tất cả mọi người. Điều khó nhất là tạo ra k...","title":"Work Task Planner"},"agentsdast":{"thumbnail":"https://statics-green-node.vcdn.com.vn/64_cb7b403ab8.png","description":"AgentSDAST Vấn đề (Problem) API security testing phụ thuộc vào phân tích manual. Ai gặp vấn đề: Secu...","title":"AgentSDAST"},"phishing-guardian-chatbot":{"thumbnail":"https://statics-green-node.vcdn.com.vn/105_5cd69c84d5.png","description":"Phishing Guardian Chatbot— Lá chắn chống lừa đảo cho mọi nhân viên VẤN ĐỀ Mỗi ngày nhân viên nhận vô...","title":"Phishing Guardian Chatbot"},"voc-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/116_cabfcba71f.jpg","description":"VOC-Agent — Biến hàng trăm review thành insight chỉ trong vài phút Mỗi ngày, marketer và product own...","title":"VOC-Agent"},"loandt-ai-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/121_ca435ff29d.png","description":"Trợ lý pháp luật về luật dân sự, lao động, bảo hiểm xã hội (BHXH), bảo hiểm y tế (BHYT) và luật việc...","title":"LoanDt AI Agent"},"tro-ly-phap-ly-ai":{"thumbnail":"https://statics-green-node.vcdn.com.vn/109_0fd3cd0e5b.png","description":"trợ lý AI được thiết kế để tự động cập nhật các quy định, chính sách và văn bản pháp luật mới hằng n...","title":"Trợ lý pháp lý AI"},"monetization-allocator-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/187_af996329b4.png","description":"Monetization Allocator Agent Bài toán nên giới thiệu sản phẩm tài chính/ sản phẩm nào cho người dùng...","title":"Monetization Allocator Agent"},"diagram-tool":{"thumbnail":"https://statics-green-node.vcdn.com.vn/184_4aed2c9a02.png","description":"Vấn đề đang được giải quyết Khi làm việc với tài liệu kỹ thuật (PRD, design doc) hoặc dữ liệu dạng b...","title":"Diagram Tool"},"aging-dashboard":{"thumbnail":"https://statics-green-node.vcdn.com.vn/86_48c075ee97.png","description":"(1) Tự động hóa quy trình quản lý công nợ quá hạn (2) Tất cả nhân sự thuộc phòng ban kế toán được ph...","title":"Aging Dashboard"},"pdf-fix-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/153_3a70541966.png","description":"(1) Vấn đề: Khi Công ty hoặc đối tác thay đổi thông tin đột xuất mà đội Tech chưa có timeline xử lý ...","title":"PDF FIX Agent"},"vibe-typing":{"thumbnail":"https://statics-green-node.vcdn.com.vn/135_5a9642aedd.png","description":"Cảnh quen thuộc lúc 2 giờ sáng: bạn đang viết luận văn, cần một từ tiếng Anh \"nghe cho ra dáng học t...","title":"Vibe Typing"},"manage-and-approve-merchant-agreement":{"thumbnail":"https://statics-green-node.vcdn.com.vn/203_a7695eab6d.png","description":"Vấn đề: Mỗi khi có đối tác mới ký hợp đồng với ZaloPay, nhân sự phải đọc thủ công bản hợp đồng dài h...","title":"Manage and Approve Merchant Agreement"},"dashboard-monitor-assisstant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/52_9f7e142b5e.jpeg","description":"Tóm tắt: Dashboard Monitor — Trợ lý Giám sát Fintech được hỗ trợ bởi AI Vấn đề Các bạn Product, Tech...","title":"Dashboard Monitor Assisstant"},"flight-finder-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/225_12884336a3.png","description":"Flight Finder Agent là trợ lý AI tìm vé máy bay, xây dựng trên GreenNode AgentBase với LangGraph và ...","title":"flight-finder-agent"},"mktai-commander":{"thumbnail":"https://statics-green-node.vcdn.com.vn/195_d55ef08c14.png","description":"Vấn đề Đội Marketing và Brand thường mất nhiều thời gian để theo dõi tin tức, xu hướng thị trường, h...","title":"mktai Commander"},"agentr":{"thumbnail":"https://statics-green-node.vcdn.com.vn/42_110da624f4.jpeg","description":"01 - Vấn đề Trong quá trình phân tích hành vi của fraudster, Fraud Strategist phải phối hợp với DA đ...","title":"AgentR"},"secwatch":{"thumbnail":"https://statics-green-node.vcdn.com.vn/8_8d43a053ff.png","description":"(1) Vấn đề: Mỗi ngày có hàng trăm tin an ninh mạng, đa số là nhiễu và bằng tiếng Anh, khiến đội bảo ...","title":"SecWatch"},"app-review-agnet":{"thumbnail":"https://statics-green-node.vcdn.com.vn/183_a5107f1bb3.jpg","description":"Vấn đề Zalopay nhận hàng trăm review/ngày trên Google Play — kênh phản hồi sớm nhất về sự cố. Đội vậ...","title":"App Review Agnet"},"analysis-agent-ai":{"thumbnail":"https://statics-green-node.vcdn.com.vn/196_2c2fad35bb.png","description":"Agent này được xây dựng để giải quyết bài toán chuẩn bị weekly business performance report cho team ...","title":"Analysis Agent AI"},"veridex-app-intelligence-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/48_f4b1561dd8.png","description":"Veridex — App Intelligence Agent (1) Vấn đề: Quyết định về app/game thường dựa trên cảm tính (\"bản c...","title":"Veridex — App Intelligence Agent"},"claw-a-thon-travel":{"thumbnail":"https://statics-green-node.vcdn.com.vn/160_4a837732ca.jpg","description":"Vấn đề đội giải quyết Hiện nay, việc lên kế hoạch cho một chuyến du lịch thường mất rất nhiều thời g...","title":"Claw-a-thon Travel"},"easy-lazy-morning":{"thumbnail":"https://statics-green-node.vcdn.com.vn/31_51015ca40a.png","description":"Easy, Lazy Morning Agent — dành cho những ai ghét khởi đầu chậm chạp. Mỗi sáng, nhân viên văn phòng ...","title":"Easy Lazy Morning"},"merch-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/192_c3610af577.png","description":"Merch Agent tự động hóa quy trình sản xuất merchandise cho các tựa game của VNGGames — công việc hiệ...","title":"Merch Agent"},"zalo-news-bot-v4":{"thumbnail":"https://statics-green-node.vcdn.com.vn/72_7f44f6acac.jpg","description":"Đây là một giải pháp thu thập và tổng hợp tin tức tự động đầy mạnh mẽ, được triển khai chuyên sâu tr...","title":"zalo-news-bot-v4"},"datahub-advisor":{"thumbnail":"https://statics-green-node.vcdn.com.vn/150_ebf66f905c.png","description":"Trong môi trường fintech/e-wallet, mỗi nghiệp vụ như chuyển tiền IBFT, thanh toán QR hay KYC đều tạo...","title":"DataHub Advisor"},"jira-assistant":{"thumbnail":"https://statics-green-node.vcdn.com.vn/117_af4efbe83c.png","description":"Một team data hiện đại gồm nhiều vai trò: BI Analyst chuyển hóa câu hỏi kinh doanh thành phân tích, ...","title":"Jira Assistant"},"zalopay-fintech-intelligence-agent":{"thumbnail":"https://statics-green-node.vcdn.com.vn/96_c8650a24d6.png","description":"Vấn đề: Zalopay đang trong giai đoạn tăng trưởng mạnh và cần theo dõi thị trường fintech Việt Nam mỗ...","title":"Zalopay Fintech Intelligence Agent"},"canteen-campus":{"thumbnail":"https://statics-green-node.vcdn.com.vn/27_41832eb0a8.jpg","description":"Canteen Campus Assistant — Trợ lý giúp bạn tổng hợp menu, gợi ý theo sở thích và nhắc nhở đặt món mỗ...","title":"Canteen Campus"},"daily-benchmark":{"thumbnail":"https://statics-green-node.vcdn.com.vn/186_9314ba52b9.png","description":"(1) Vấn đề giải quyết: Trong thị trường Fintech thay đổi từng giờ, team Product thường mất quá nhiều...","title":"Daily benchmark"},"lucky-campaign-generator":{"thumbnail":"https://statics-green-node.vcdn.com.vn/188_ca03092c5a.png","description":"Agent giải quyết vấn đề gì? Hiện tại, các marketing campaign trong Zalopay thường cố định sẵn vài dạ...","title":"Lucky Campaign Generator"},"nexusbank":{"thumbnail":"https://statics-green-node.vcdn.com.vn/230_691961e2bc.jpg","description":"NEXUSBANK là một AI tìm kiếm các thông tin mới, hàng ngày của ngành tài chính và ngân hàng (bao gồm ...","title":"NexusBank"}};
+let EXTRAS = {...BAKED_EXTRAS};
+const STORAGE_KEY = 'clawathon-extras-v1';
+// Allow localStorage override only if user manually re-synced (and has at least as much data)
+try {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    if (parsed && typeof parsed === 'object' && Object.keys(parsed).length >= Object.keys(BAKED_EXTRAS).length * 0.9) {
+      EXTRAS = parsed;
+    }
+  }
+} catch (e) { console.warn('Cannot load extras:', e); }
+
+// Script that user runs in Clawathon page Console to extract data
+const EXTRACT_SCRIPT = `(async()=>{let prev=0;for(let i=0;i<60;i++){window.scrollTo(0,document.body.scrollHeight);await new Promise(r=>setTimeout(r,700));if(document.body.scrollHeight===prev&&i>4)break;prev=document.body.scrollHeight;}window.scrollTo(0,0);await new Promise(r=>setTimeout(r,400));const TRACKS=['Agentic Assistant','Automation & Integration','Data Analysis'];const res=[];document.querySelectorAll('a[href*="/project/"]').forEach(a=>{const slug=decodeURIComponent((a.href.split('/project/')[1]||'').split('?')[0].split('#')[0]);if(!slug)return;let card=a.parentElement;for(let i=0;i<6&&card&&card.tagName!=='ARTICLE';i++)card=card.parentElement;if(!card||card.tagName!=='ARTICLE')return;let thumbnail='';for(const img of card.querySelectorAll('img')){const u=img.currentSrc||img.src||img.getAttribute('data-src')||'';if(u&&!u.startsWith('data:')&&!u.includes('icon')&&!u.includes('avatar')){thumbnail=u;break;}}const txt=card.innerText||'';let vote=null;const bi=txt.indexOf('Bình chọn');if(bi>0){let j=bi-1;while(j>=0&&(txt[j]===' '||txt[j]==='\n'||txt[j]==='\r'||txt[j]==='\t'))j--;let d='';while(j>=0&&txt[j]>='0'&&txt[j]<='9'){d=txt[j]+d;j--;}if(d)vote=parseInt(d,10);}const ps=[...card.querySelectorAll('p')].map(p=>p.textContent.trim()).filter(t=>t.length>20&&t.length<800&&!TRACKS.includes(t));let description=ps.length?ps.sort((a,b)=>b.length-a.length)[0]:'';for(const tr of TRACKS){if(description.startsWith(tr))description=description.slice(tr.length).trim();}const hs=[...card.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(h=>h.textContent.trim()).filter(t=>t&&!TRACKS.includes(t));const title=hs.length?hs[hs.length-1]:'';res.push({slug,thumbnail,description,title,vote});});const seen={};const u=res.filter(d=>seen[d.slug]?false:(seen[d.slug]=1));const voteCount=u.filter(x=>x.vote!==null).length;const total=u.reduce((s,x)=>s+(x.vote||0),0);const json=JSON.stringify({syncedAt:new Date().toISOString(),items:u});window.__clawJSON=json;let ok=false;try{await navigator.clipboard.writeText(json);ok=true;}catch(e){}console.log('%c'+u.length+' du an — '+voteCount+' co vote — tong '+total+' votes','color:#00DBA8;font-size:14px;font-weight:bold');console.table(u.slice(0,5));if(!ok)console.log('%ccopy(window.__clawJSON)','color:#60A5FA;background:#111;padding:4px 8px;border-radius:4px;font-family:monospace');alert(ok?'Done! '+u.length+' du an ('+voteCount+' votes) da copy.':''+u.length+' du an. Clipboard bi chan - go: copy(window.__clawJSON)');})();`;
+
+function trackClass(t) {
+  if (t === 'Agentic Assistant') return 'agentic';
+  if (t === 'Automation & Integration') return 'auto';
+  return 'data';
+}
+function trackIcon(t) {
+  if (t === 'Agentic Assistant') return '🤖';
+  if (t === 'Automation & Integration') return '⚙️';
+  return '📊';
+}
+
+let currentTrack = 'all';
+let currentSearch = '';
+let currentSort = 'vote-desc';
+
+// Get effective vote: EXTRAS override takes priority, falls back to RAW CSV value
+function getVote(item) {
+  const e = EXTRAS[item.slug];
+  if (e && typeof e.vote === 'number' && e.vote >= 0) return e.vote;
+  return item.vote || 0;
+}
+
+// Recompute MAX_VOTE and rank map based on current EXTRAS state
+let effectiveMaxVote = MAX_VOTE;
+let globalRankMap = {};
+
+function recomputeRanks() {
+  const voted = RAW.map(d => ({slug: d.slug, vote: getVote(d)})).filter(d => d.vote > 0).sort((a,b) => b.vote - a.vote);
+  globalRankMap = {};
+  voted.forEach((d,i) => { globalRankMap[d.slug] = i + 1; });
+  effectiveMaxVote = voted.length > 0 ? voted[0].vote : MAX_VOTE;
+}
+recomputeRanks();
+
+function rankBadge(rank) {
+  if (!rank) return '<div class="card-rank unranked">Chưa bình chọn</div>';
+  if (rank === 1) return `<div class="card-rank gold">🥇 #${rank}</div>`;
+  if (rank === 2) return `<div class="card-rank silver">🥈 #${rank}</div>`;
+  if (rank === 3) return `<div class="card-rank bronze">🥉 #${rank}</div>`;
+  return `<div class="card-rank">#${rank}</div>`;
+}
+
+function renderCard(item) {
+  const voteVal = getVote(item);
+  const barPct = effectiveMaxVote > 0 ? Math.round((voteVal / effectiveMaxVote) * 100) : 0;
+  const tc = trackClass(item.track);
+  const rank = globalRankMap[item.slug] || null;
+
+  // Members display: show usernames from emails
+  const emails = item.emails ? item.emails.split(',').map(e => e.trim()) : [];
+  const usernames = emails.map(e => e.split('@')[0]).filter(Boolean);
+  const memberStr = usernames.length > 0
+    ? usernames.slice(0, 3).join(', ') + (usernames.length > 3 ? ` +${usernames.length - 3}` : '')
+    : `${item.memberCount} thành viên`;
+
+  // Use extras (thumbnail + description from showcase) if synced
+  const extra = EXTRAS[item.slug] || {};
+  const thumbUrl = extra.thumbnail || '';
+  const description = extra.description || '';
+  const projTitle = extra.title || '';
+
+  // Escape for HTML attribute
+  const escAttr = s => String(s).replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+  return `
+<div class="card" onclick="window.open('${item.link}','_blank')">
+  ${rankBadge(rank)}
+  <div class="thumb-wrap">
+    <div class="thumb-placeholder">
+      <span class="ph-icon">🖼️</span>
+      <span>${thumbUrl ? 'Đang tải...' : 'Chưa có thumbnail'}</span>
+    </div>
+    ${thumbUrl ? `<img
+      class="thumb-img"
+      data-src="${escAttr(thumbUrl)}"
+      alt="${escAttr(item.team)}"
+      onerror="this.style.display='none'"
+      onload="this.classList.add('loaded')"
+    >` : ''}
+  </div>
+  <div class="card-body">
+    <div class="card-header">
+      <div class="card-name">${item.team}</div>
+      <div class="vote-chip ${voteVal === 0 ? 'no-vote' : ''}">${voteVal > 0 ? voteVal : '—'}</div>
+    </div>
+    ${projTitle ? `<div class="proj-title">${projTitle}</div>` : ''}
+    ${description ? `<div class="proj-desc">${description}</div>` : ''}
+    ${voteVal > 0 ? `<div class="vote-bar-wrap"><div class="vote-bar" style="width:${barPct}%"></div></div>` : ''}
+    <div>
+      <span class="track-tag ${tc}">${trackIcon(item.track)} ${item.track}</span>
+    </div>
+    <div class="card-meta">
+      <div class="meta-item">👥 ${item.memberCount}</div>
+      <div class="meta-item grow"><span title="${escAttr(item.emails)}">📧 ${memberStr}</span></div>
+    </div>
+  </div>
+  <a class="card-link" href="${item.link}" target="_blank" onclick="event.stopPropagation()">
+    Xem dự án →
+  </a>
+</div>`;
+}
+
+function getFiltered() {
+  let items = [...RAW];
+  if (currentTrack !== 'all') items = items.filter(d => d.track === currentTrack);
+  if (currentSearch) {
+    const q = currentSearch.toLowerCase();
+    items = items.filter(d =>
+      d.team.toLowerCase().includes(q) ||
+      d.emails.toLowerCase().includes(q) ||
+      d.slug.toLowerCase().includes(q) ||
+      d.track.toLowerCase().includes(q)
+    );
+  }
+  switch (currentSort) {
+    case 'vote-desc': items.sort((a,b) => getVote(b) - getVote(a)); break;
+    case 'vote-asc':  items.sort((a,b) => {
+      const va = getVote(a), vb = getVote(b);
+      if (va === 0 && vb === 0) return 0;
+      if (va === 0) return 1;
+      if (vb === 0) return -1;
+      return va - vb;
+    }); break;
+    case 'name-asc':  items.sort((a,b) => a.team.localeCompare(b.team, 'vi')); break;
+    case 'rank-asc':  items.sort((a,b) => (a.no||999) - (b.no||999)); break;
+  }
+  return items;
+}
+
+// Lazy load images with IntersectionObserver
+let observer;
+function setupLazyLoad() {
+  if (observer) observer.disconnect();
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          delete img.dataset.src;
+          observer.unobserve(img);
+        }
+      }
+    });
+  }, { rootMargin: '200px' });
+  document.querySelectorAll('img[data-src]').forEach(img => observer.observe(img));
+}
+
+function render() {
+  const items = getFiltered();
+  const grid = document.getElementById('grid');
+  document.getElementById('count-num').textContent = items.length;
+
+  if (items.length === 0) {
+    grid.innerHTML = `<div class="empty"><h3>Không tìm thấy kết quả 🔍</h3><p>Thử thay đổi từ khóa hoặc bỏ bộ lọc</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = items.map(item => renderCard(item)).join('');
+  setupLazyLoad();
+}
+
+// Events
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentTrack = btn.dataset.track;
+    document.querySelectorAll('.filter-btn').forEach(b => b.className = 'filter-btn');
+    const map = { 'all': 'active-all', 'Agentic Assistant': 'active-agentic', 'Automation & Integration': 'active-auto', 'Data Analysis': 'active-data' };
+    btn.classList.add(map[currentTrack] || '');
+    render();
+  });
+});
+
+let searchTimer;
+document.getElementById('search').addEventListener('input', e => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => { currentSearch = e.target.value.trim(); render(); }, 200);
+});
+
+document.getElementById('sort').addEventListener('change', e => {
+  currentSort = e.target.value;
+  render();
+});
+
+render();
+
+// Build quick analytics in hero
+function buildAnalytics() {
+  const total = RAW.length;
+  const trackData = [
+    { key: 'Agentic Assistant', icon: '🤖', name: 'Agentic', color: '#A89CFF' },
+    { key: 'Automation & Integration', icon: '⚙️', name: 'Automation', color: '#00DBA8' },
+    { key: 'Data Analysis', icon: '📊', name: 'Data', color: '#FF9F8C' },
+  ];
+  const trackEl = document.getElementById('track-stats');
+  trackEl.innerHTML = trackData.map(t => {
+    const count = RAW.filter(d => d.track === t.key).length;
+    const pct = Math.round(count / total * 100);
+    return `<div class="chip" data-track-filter="${t.key}" title="Lọc theo ${t.name}">
+      <span class="chip-dot" style="background:${t.color}"></span>
+      <span class="chip-text">${t.icon} <strong>${count}</strong> ${t.name} <span class="pct">${pct}%</span></span>
+    </div>`;
+  }).join('');
+
+  const solo = RAW.filter(d => d.memberCount === 1).length;
+  const team = RAW.filter(d => d.memberCount > 1).length;
+  const modeEl = document.getElementById('mode-stats');
+  modeEl.innerHTML = `
+    <div class="chip">
+      <span class="chip-dot" style="background:#60A5FA"></span>
+      <span class="chip-text">👤 <strong>${solo}</strong> Cá nhân <span class="pct">${Math.round(solo/total*100)}%</span></span>
+    </div>
+    <div class="chip">
+      <span class="chip-dot" style="background:#FFD700"></span>
+      <span class="chip-text">👥 <strong>${team}</strong> Đội <span class="pct">${Math.round(team/total*100)}%</span></span>
+    </div>
+  `;
+
+  // Make track chips clickable to filter
+  document.querySelectorAll('[data-track-filter]').forEach(el => {
+    el.addEventListener('click', () => {
+      const t = el.dataset.trackFilter;
+      const btn = document.querySelector(`.filter-btn[data-track="${t}"]`);
+      if (btn) btn.click();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+}
+buildAnalytics();
+
+// ===== Hero stats (Tổng Agents / Tổng votes) =====
+function updateHeroStats() {
+  const totalAgents = RAW.length;
+  let totalVotes = 0;
+  RAW.forEach(d => { totalVotes += getVote(d); });
+  document.getElementById('stat-total-agents').textContent = totalAgents;
+  document.getElementById('stat-total-votes').textContent = totalVotes.toLocaleString('vi-VN');
+}
+updateHeroStats();
+
+// ===== Top 5 leaderboard =====
+function renderLeaderboard() {
+  const sorted = RAW.map(d => ({...d, _vote: getVote(d)}))
+    .filter(d => d._vote > 0)
+    .sort((a, b) => b._vote - a._vote)
+    .slice(0, 5);
+
+  const el = document.getElementById('leaderboard');
+  if (sorted.length === 0) {
+    el.innerHTML = '<div style="text-align:center;padding:24px;color:var(--muted);font-size:14px">Chưa có team nào được bình chọn.</div>';
+    return;
+  }
+  el.innerHTML = sorted.map((d, i) => {
+    const rank = i + 1;
+    const rankIcon = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`;
+    return `
+      <div class="lb-row rank-${rank}">
+        <div class="lb-rank">${rankIcon}</div>
+        <div class="lb-info">
+          <div class="lb-name" title="${d.team}">${d.team}</div>
+          <div class="lb-track">${d.track}</div>
+        </div>
+        <div class="lb-vote">
+          <div class="lb-vote-num">${d._vote}</div>
+          <div class="lb-vote-lbl">votes</div>
+        </div>
+        <a class="lb-btn" href="${d.link}" target="_blank" rel="noopener">
+          🗳️ Bình chọn ngay
+        </a>
+      </div>
+    `;
+  }).join('');
+}
+renderLeaderboard();
+
+// ===== Countdown to vote closing (16:30 03/07/2026 ICT) =====
+const DEADLINE = new Date('2026-07-03T16:30:00+07:00').getTime();
+function updateCountdown() {
+  const now = Date.now();
+  const diff = DEADLINE - now;
+  const cd = document.getElementById('countdown');
+
+  if (diff <= 0) {
+    cd.classList.add('ended');
+    cd.classList.remove('urgent');
+    document.getElementById('cd-days').textContent = '00';
+    document.getElementById('cd-hours').textContent = '00';
+    document.getElementById('cd-mins').textContent = '00';
+    document.getElementById('cd-secs').textContent = '00';
+    return;
+  }
+
+  // Urgent if < 1 hour
+  if (diff < 60 * 60 * 1000) {
+    cd.classList.add('urgent');
+  } else {
+    cd.classList.remove('urgent');
+  }
+
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ===== Admin mode: show sync button when ?admin=1 in URL =====
+if (new URLSearchParams(window.location.search).get('admin') === '1') {
+  const btn = document.getElementById('open-sync');
+  if (btn) btn.style.display = '';
+}
+
+// ===== SYNC MODAL =====
+const modal = document.getElementById('sync-modal');
+const scriptBox = document.getElementById('script-content');
+scriptBox.textContent = EXTRACT_SCRIPT;
+
+function openModal() { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+
+document.getElementById('open-sync').addEventListener('click', openModal);
+document.getElementById('close-sync').addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+// Copy script button
+document.getElementById('copy-script').addEventListener('click', async () => {
+  const btn = document.getElementById('copy-script');
+  try {
+    await navigator.clipboard.writeText(EXTRACT_SCRIPT);
+    btn.textContent = '✅ Đã copy!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copy script'; btn.classList.remove('copied'); }, 2000);
+  } catch (e) {
+    // Fallback: select the script box
+    const range = document.createRange();
+    range.selectNode(scriptBox);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    btn.textContent = '✅ Đã copy!';
+    setTimeout(() => { btn.textContent = '📋 Copy script'; }, 2000);
+  }
+});
+
+// Save data button
+document.getElementById('save-data').addEventListener('click', () => {
+  const text = document.getElementById('paste-data').value.trim();
+  const status = document.getElementById('save-status');
+  if (!text) {
+    status.innerHTML = '⚠️ Hãy paste dữ liệu vào ô trên trước';
+    status.style.color = '#FF9F8C';
+    return;
+  }
+
+  // Smart detection: did the user paste the SCRIPT back instead of the data?
+  if (text.startsWith('(async') || text.includes('document.querySelectorAll') || text.includes('navigator.clipboard.writeText')) {
+    status.innerHTML = `❌ Đây là <strong>script</strong>, không phải kết quả.<br>
+      <span style="color:var(--muted); font-weight:400; font-size:12px; line-height:1.6; display:block; margin-top:6px">
+      → Quay lại tab Clawathon, paste script vào <strong>Console</strong>, nhấn Enter.<br>
+      → Đợi popup "🎉 Xong!" hiện ra, bấm OK.<br>
+      → Quay lại đây, <strong>xóa ô paste</strong> rồi nhấn Cmd+V lần nữa.<br>
+      → Nếu vẫn ra script: clipboard chưa được cấp quyền — xem cuối Console, copy đoạn JSON bắt đầu bằng <code>[{"slug":...</code> rồi paste vào.
+      </span>`;
+    status.style.color = '#FF9F8C';
+    return;
+  }
+
+  // Detect if it's clearly not JSON-like
+  if (!text.startsWith('[') && !text.startsWith('{')) {
+    status.innerHTML = '❌ Dữ liệu cần bắt đầu bằng dấu <code>[</code> hoặc <code>{</code>. Bạn paste có vẻ không đúng — thử lại nhé.';
+    status.style.color = '#FF9F8C';
+    return;
+  }
+
+  try {
+    const parsed = JSON.parse(text);
+    // New format: { syncedAt, items: [...] }
+    // Old format: [ ... ]  (still supported for backward compat)
+    let items;
+    let syncedAt = null;
+    if (Array.isArray(parsed)) {
+      items = parsed;
+    } else if (parsed && Array.isArray(parsed.items)) {
+      items = parsed.items;
+      syncedAt = parsed.syncedAt || null;
+    } else {
+      throw new Error('Format không đúng — cần array hoặc {items: [...]}');
+    }
+    if (items.length === 0) throw new Error('Mảng rỗng — script chưa lấy được dự án nào');
+
+    const TRACKS = ['Agentic Assistant', 'Automation & Integration', 'Data Analysis'];
+    const teamBySlug = {};
+    RAW.forEach(d => { teamBySlug[d.slug] = d.team; });
+
+    const cleanDesc = (raw, slug) => {
+      if (!raw) return '';
+      let s = String(raw).trim();
+      for (const t of TRACKS) {
+        if (s.startsWith(t)) { s = s.slice(t.length).trim(); break; }
+      }
+      s = s.replace(/^\d+\s*Bình chọn\s*/i, '').trim();
+      const team = teamBySlug[slug];
+      if (team && s.startsWith(team)) s = s.slice(team.length).trim();
+      s = s.replace(/^[—\-–:·•|]+\s*/, '').trim();
+      return s;
+    };
+
+    const cleanTitle = (raw) => {
+      if (!raw) return '';
+      let s = String(raw).trim();
+      for (const t of TRACKS) {
+        if (s === t) return '';
+      }
+      return s;
+    };
+
+    const newExtras = {};
+    let count = 0;
+    let voteCount = 0;
+    items.forEach(item => {
+      if (item && item.slug) {
+        const entry = {
+          thumbnail: item.thumbnail || '',
+          description: cleanDesc(item.description, item.slug),
+          title: cleanTitle(item.title),
+        };
+        if (typeof item.vote === 'number' && item.vote >= 0) {
+          entry.vote = item.vote;
+          voteCount++;
+        }
+        newExtras[item.slug] = entry;
+        count++;
+      }
+    });
+    if (count === 0) throw new Error('Không tìm thấy "slug" trong data — format có thể đã thay đổi');
+
+    EXTRAS = newExtras;
+    if (syncedAt) {
+      try { localStorage.setItem('clawathon-synced-at', syncedAt); } catch(e){}
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(EXTRAS));
+
+    const matchedZalo = RAW.filter(d => EXTRAS[d.slug] && (EXTRAS[d.slug].description || EXTRAS[d.slug].thumbnail || typeof EXTRAS[d.slug].vote === 'number')).length;
+    const matchedVotes = RAW.filter(d => EXTRAS[d.slug] && typeof EXTRAS[d.slug].vote === 'number').length;
+    status.innerHTML = `✅ Đã lưu <strong>${count}</strong> dự án — khớp <strong>${matchedZalo}/${RAW.length}</strong> Zalopay (vote: ${matchedVotes}). Đang cập nhật...`;
+    status.style.color = '#00DBA8';
+
+    // Recompute everything and re-render
+    recomputeRanks();
+    updateHeroStats();
+    renderLeaderboard();
+    updateSyncButton();
+    render();
+    setTimeout(closeModal, 2200);
+  } catch (e) {
+    status.innerHTML = '❌ Không đọc được dữ liệu: ' + e.message;
+    status.style.color = '#FF9F8C';
+  }
+});
+
+// Clear data
+document.getElementById('clear-data').addEventListener('click', () => {
+  if (!confirm('Xóa toàn bộ dữ liệu thumbnail và mô tả đã sync?')) return;
+  EXTRAS = {};
+  localStorage.removeItem(STORAGE_KEY);
+  document.getElementById('paste-data').value = '';
+  document.getElementById('save-status').textContent = '🗑️ Đã xóa';
+  document.getElementById('save-status').style.color = 'var(--muted)';
+  updateSyncButton();
+  render();
+});
+
+function updateSyncButton() {
+  const count = Object.keys(EXTRAS).length;
+  const label = document.getElementById('sync-label');
+  const btn = document.getElementById('open-sync');
+  if (count > 0) {
+    label.textContent = `🔄 Cập nhật từ Clawathon`;
+    btn.classList.add('has-data');
+  } else {
+    label.textContent = 'Đồng bộ từ Clawathon';
+    btn.classList.remove('has-data');
+  }
+}
+updateSyncButton();
+
+// Close on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+});
+</script>
+</body>
+</html>
